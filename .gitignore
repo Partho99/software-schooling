@@ -2,8 +2,6 @@
 /build
 *.class
 
-
-
 # Log file
 *.log
 
