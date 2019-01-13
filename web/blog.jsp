@@ -90,6 +90,7 @@
                 <main class="posts-listing col-lg-8"> 
                     <div class="container">
                         <div class="row">
+                            
                             <!-- post -->
                             <div class="post col-xl-6" id="imghov">
                                 <div class="post-thumbnail" ><a href="post.html" ><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid" ></a></div>
