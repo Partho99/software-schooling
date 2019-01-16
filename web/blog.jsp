@@ -67,7 +67,7 @@
                             </li>
                             <li class="nav-item" ><a href="post.jsp" class="nav-link fa fa-clipboard" id="linkcolor"> Posts</a>
                             </li>
-                            <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
+                            <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contacts</a>
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
                             </li>
