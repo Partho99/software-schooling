@@ -63,11 +63,11 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item" ><a href="index.jsp" class="nav-link   fa fa-home" id="linkcolor"> Home</a>
                             </li>
-                            <li class="nav-item" ><a href="blog.jsp" class="nav-link active fa fa-rss " id="linkcolor"> Blogs</a>
+                            <li class="nav-item" ><a href="blog.jsp" class="nav-link active fa fa-rss " id="linkcolor"> Blog</a>
                             </li>
-                            <li class="nav-item" ><a href="post.jsp" class="nav-link fa fa-clipboard" id="linkcolor"> Posts</a>
+                            <li class="nav-item" ><a href="post.jsp" class="nav-link fa fa-clipboard" id="linkcolor"> Post</a>
                             </li>
-                            <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contacts</a>
+                            <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
                             </li>
