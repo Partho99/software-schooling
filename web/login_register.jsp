@@ -66,11 +66,11 @@
                                 </form>
                                 <form id="register-form" action="" method="post" role="form" style="display: none;">
                                     <div class="form-group input-group">
-                                        <span class="input-group-addon" id="iconcolor"><i class="fa fa-hashtag" ></i></span>
+                                        <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
                                         <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="">
                                     </div>
                                     <div class="form-group input-group">
-                                        <span class="input-group-addon" id="iconcolor"><i class="fa fa-hashtag" ></i></span>
+                                        <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
                                         <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="">
                                     </div>
                                     <div class="form-group input-group">
