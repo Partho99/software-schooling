@@ -13,7 +13,6 @@ import java.util.Date;
  */
 public class User {
 
-
     private int userId;
     private String firstName;
     private String lastName;
@@ -118,7 +117,4 @@ public class User {
         this.password = password;
     }
 
-    
-
-    
 }

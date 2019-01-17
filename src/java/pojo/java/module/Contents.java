@@ -12,7 +12,7 @@ import java.util.Date;
  * @author partho
  */
 public class Contents {
-    
+
     private int contentId;
     private String contentTitle;
     private String contentText;
@@ -76,6 +76,5 @@ public class Contents {
     public void setUpdateDtm(Date updateDtm) {
         this.updateDtm = updateDtm;
     }
-    
-    
+
 }

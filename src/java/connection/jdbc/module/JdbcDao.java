@@ -10,28 +10,45 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 /**
  *
  * @author partho
  */
 public class JdbcDao {
-    Connection connection = null;
-    ResultSet resultSet = null;
 
-    PreparedStatement ps = null;
+    public Connection connection = null;
+    public ResultSet resultSet = null;
+    public Statement statement = null;
+    public PreparedStatement ps = null;
 
-    public Connection connect() {
+    public JdbcDao() {
 
+    }
+
+    public void openConnection() throws SQLException, ClassNotFoundException {
+
+        Class.forName("com.mysql.jdbc.Driver");
+        connection =(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/softwareschooling", "root", "44633");
+
+    }
+
+    public void closeConnection() {
         try {
-            Class.forName("com.mysql.jdbc.Driver");
-            connection = (Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/softwareschooling", "root", "44633");
-
-            return connection;
-        } catch (ClassNotFoundException | SQLException e) {
-            // Handle exceptions    ...
-            System.out.println("A problem accessing the database");
+            if (resultSet != null) {
+                resultSet.close();
+            }
+            if (statement != null) {
+                statement.close();
+            }
+            if (ps != null) {
+                ps.close();
+            }
+            if (connection != null) {
+                connection.close();
+            }
+        } catch (SQLException e) {
         }
-        return connection;
     }
 }

@@ -12,7 +12,7 @@ import java.util.Date;
  * @author partho
  */
 public class Post {
-    
+
     private int postId;
     private String title;
     private int isActive;
@@ -66,6 +66,5 @@ public class Post {
     public void setUpdateDtm(Date updateDtm) {
         this.updateDtm = updateDtm;
     }
-    
-    
+
 }

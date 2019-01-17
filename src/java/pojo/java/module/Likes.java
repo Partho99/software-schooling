@@ -12,7 +12,7 @@ import java.util.Date;
  * @author partho
  */
 public class Likes {
-    
+
     private int likeId;
     private int userId;
     private int postId;
@@ -76,6 +76,5 @@ public class Likes {
     public void setUpdateDtm(Date UpdateDtm) {
         this.UpdateDtm = UpdateDtm;
     }
-    
-    
+
 }
