@@ -15,4 +15,15 @@ $(function() {
 	});
 });
 
-
+function Validate(){
+    var password1 = document.getElementById("password");
+    var password2 = document.getElementById("confirm-password");
+    
+    if(password1 !== password2){
+        alert("do not match password");
+        return false;
+    }
+    else{
+        return true;
+    }
+}
