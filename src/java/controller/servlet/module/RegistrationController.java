@@ -10,7 +10,6 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -31,7 +30,7 @@ public class RegistrationController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         java.util.Date dt = new java.util.Date();
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = sdf.format(dt);
@@ -43,6 +42,9 @@ public class RegistrationController extends HttpServlet {
         String userName = request.getParameter("username");
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmpassword");
+
+        String pass1 = request.getParameter("password");
+        String pass2 = request.getParameter("confirmpassword");
 
         JdbcDao jdbcDao = new JdbcDao();
         try {
@@ -60,11 +62,11 @@ public class RegistrationController extends HttpServlet {
             jdbcDao.ps.setString(7, currentTime);
 
             jdbcDao.ps.executeUpdate();
-              request.getRequestDispatcher("blog.jsp").forward(request, response);
+            //  request.getRequestDispatcher("blog.jsp").forward(request, response);
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(RegistrationController.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
     }
 
     @Override

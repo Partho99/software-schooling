@@ -83,7 +83,7 @@
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-lock" ></i></span>
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" onkeyup= check();>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-lock" ></i></span>
@@ -92,7 +92,7 @@
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6 mx-auto">
-                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now">
+                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now" onclick="return Validate()">
                                             </div>
                                         </div>
                                     </div>
