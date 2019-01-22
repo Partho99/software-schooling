@@ -5,15 +5,14 @@
  */
 package controller.servlet.module;
 
-import connection.jdbc.module.JdbcDao;
+import connection.jdbc.module.RegistrationLoginDB;
 import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import pojo.java.module.User;
 
 /**
  *
@@ -36,6 +35,8 @@ public class RegistrationController extends HttpServlet {
         String currentTime = sdf.format(dt);
         String updateTime = sdf.format(dt);
 
+        //for registration
+        
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String email = request.getParameter("email");
@@ -43,28 +44,37 @@ public class RegistrationController extends HttpServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmpassword");
 
-        String pass1 = request.getParameter("password");
-        String pass2 = request.getParameter("confirmpassword");
-
-        JdbcDao jdbcDao = new JdbcDao();
-        try {
-
-            jdbcDao.openConnection();
-            String sql = "insert into user(first_name,last_name,email,user_name,password, creation_dtm, update_dtm) values (?,?,?,?,?,?,?)";
-            jdbcDao.ps = jdbcDao.connection.prepareStatement(sql);
-
-            jdbcDao.ps.setString(1, firstName);
-            jdbcDao.ps.setString(2, lastName);
-            jdbcDao.ps.setString(3, email);
-            jdbcDao.ps.setString(4, userName);
-            jdbcDao.ps.setString(5, password);
-            jdbcDao.ps.setString(6, currentTime);
-            jdbcDao.ps.setString(7, currentTime);
-
-            jdbcDao.ps.executeUpdate();
-            //  request.getRequestDispatcher("blog.jsp").forward(request, response);
-        } catch (SQLException | ClassNotFoundException ex) {
-            Logger.getLogger(RegistrationController.class.getName()).log(Level.SEVERE, null, ex);
+       User user = new User();
+       
+       user.setFirstName(firstName);
+       user.setLastName(lastName);
+       user.setEmail(email);
+       user.setUserName(userName);
+       user.setPassword(password);
+       user.setCreationDtm(dt);
+       user.setUpdateDtm(dt);
+       
+       
+        RegistrationLoginDB.userRegistration(user);
+        
+        //for login
+        
+        String loginUserName = request.getParameter("loginusername");
+        String loginPassword = request.getParameter("loginpassword");
+        
+        User loginUser = new User();
+        
+        loginUser.setUserName(loginUserName);
+        loginUser.setPassword(loginPassword);
+        
+        RegistrationLoginDB.userLogin(loginUser);
+     
+        if (RegistrationLoginDB.userLogin(loginUser) == true) {
+            HttpSession session = request.getSession();
+            session.setAttribute("loginusername", loginUser.getFirstName());
+            
+            response.sendRedirect("index.jsp");
+        } else {
         }
 
     }

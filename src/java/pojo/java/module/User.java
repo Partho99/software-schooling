@@ -23,6 +23,10 @@ public class User {
     private Date creationDtm;
     private Date updateDtm;
     private String password;
+    
+    public User(){
+        
+    }
 
     public User(int userId, String firstName, String lastName, String email, String userName, String userType, int isActive, Date creationDtm, Date updateDtm, String password) {
         this.userId = userId;
@@ -116,5 +120,7 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+    
 
 }

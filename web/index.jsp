@@ -22,7 +22,7 @@
         <!-- Custom stylesheet - for your changes-->
         <link rel="stylesheet" href="css/custom.css">
         <link rel="shortcut icon" href="favicon.png">
-        
+
     </head>
     <body>
 
@@ -63,9 +63,29 @@
                             <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
+                                <%
+                                    if (session.getAttribute("loginusername") == null) {
+                                %>
                             </li>
                             <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
-                            </li>
+                            </li>   
+                            <%
+                            } else {
+                            %>
+                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa" id="linkcolor"><%=session.getAttribute("loginusername")%></a>
+                            </li>    
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <div class="inset">
+                                   <img  src="img/featured-pic-2.jpeg" class="profile">
+                                </div>
+                            </li> 
+                        </ul>
+                        <%
+                            }
+                        %>
+
 
                         </ul>
                         <!--                        <form class="form-inline md-form mx-auto">

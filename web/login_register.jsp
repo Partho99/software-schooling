@@ -34,14 +34,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md">
-                                <form class="form" id="login-form" action="" method="post" role="form" style="display: block;">
+                                <form class="form" id="login-form" action="RegistrationController" method="post" role="form" style="display: block;">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
-                                        <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="User Name/Email" value="">
+                                        <input type="text" name="loginusername" id="loginusername" tabindex="1" class="form-control" placeholder="User Name/Email" value="" required>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-lock" ></i></span>
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
+                                        <input type="password" name="loginpassword" id="loginpassword" tabindex="2" class="form-control" placeholder="Password" required>
                                     </div>
                                     <div class="form-group text-center">
                                         <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
@@ -67,7 +67,7 @@
                                 <form id="register-form" action="RegistrationController" method="post" role="form" style="display: none;">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
-                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="">
+                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" required="hello">
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
@@ -83,16 +83,19 @@
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-lock" ></i></span>
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" onkeyup= check();>
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" ">
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-lock" ></i></span>
-                                        <input type="password" name="confirmpassword" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
+
+                                        <input type="password" name="confirmpassword" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" ">
+
                                     </div>
+
                                     <div class="form-group">
                                         <div class="row">
                                             <div class="col-md-6 mx-auto">
-                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now" onclick="return Validate()">
+                                                <input type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-register" value="Register Now" >
                                             </div>
                                         </div>
                                     </div>
