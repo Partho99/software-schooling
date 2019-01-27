@@ -71,7 +71,11 @@ public class RegistrationController extends HttpServlet {
      
         if (RegistrationLoginDB.userLogin(loginUser) == true) {
             HttpSession session = request.getSession();
-            session.setAttribute("loginusername", loginUser.getFirstName());
+            session.setAttribute("loginfirstname", loginUser.getFirstName());
+            session.setAttribute("loginlastname", loginUser.getLastName());
+            session.setAttribute("loginemail", loginUser.getEmail());
+            session.setAttribute("loginusername", loginUser.getUserName());
+            session.setAttribute("userId", loginUser.getUserId());
             
             response.sendRedirect("index.jsp");
         } else {

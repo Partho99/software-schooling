@@ -2602,6 +2602,8 @@ a.text-dark:focus, a.text-dark:hover {
 #categorieslinkcolor:hover{
    background-color: #08a7ca;
 }
+
+/* profile picture css */
 .inset{
     width: 40px;
     height: 40px;
@@ -2618,3 +2620,5 @@ a.text-dark:focus, a.text-dark:hover {
     position: relative;
     z-index: 998;
 }
+
+/* personal info css */
