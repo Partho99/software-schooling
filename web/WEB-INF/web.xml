@@ -4,13 +4,21 @@
         <servlet-name>RegistrationController</servlet-name>
         <servlet-class>controller.servlet.module.RegistrationController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UserProfileController</servlet-name>
+        <servlet-class>controller.servlet.module.UserProfileController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationController</servlet-name>
         <url-pattern>/RegistrationController</url-pattern>
     </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UserProfileController</servlet-name>
+        <url-pattern>/UserProfileController</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
-            30
+            100
         </session-timeout>
     </session-config>
 </web-app>

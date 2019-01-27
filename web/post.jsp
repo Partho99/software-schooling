@@ -69,10 +69,36 @@
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
                             </li>
+                            <%
+                                    if (session.getAttribute("loginusername") == null) {
+                                %>
                             <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
-                            </li>
+                            </li>   
+                            <%
+                            } else {
+                            %>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <%=session.getAttribute("loginfirstname")%>
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="personal_info.jsp">Account Setting</a>
+                                    <a class="dropdown-item" href="logout.jsp">Log Out</a>
+                                </div>
+                            </li>  
+                            
 
                         </ul>
+                                <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                <div class="inset">
+                                    <img  src="img/featured-pic-2.jpeg" class="profile">
+                                </div>
+                            </li> 
+                        </ul>
+                        <%
+                            }
+                        %>
                         <!--                        <form class="form-inline md-form mx-auto">
                                                     <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
                                                     <button class="btn btn-success" type="submit">Search</button>
