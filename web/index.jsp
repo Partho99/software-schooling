@@ -72,7 +72,7 @@
                             <%
                             } else {
                             %>
-                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa" id="linkcolor"><%=session.getAttribute("loginusername")%></a>
+                            <li class="nav-item" ><a href="personal_info.jsp" class="nav-link fa" id="linkcolor"><%=session.getAttribute("loginusername")%></a>
                             </li>    
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
