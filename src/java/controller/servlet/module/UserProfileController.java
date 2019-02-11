@@ -27,6 +27,7 @@ public class UserProfileController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         
+        RegistrationLoginDB rlDB = new RegistrationLoginDB();
         
         String firstName = request.getParameter("first_name");
         String lastName = request.getParameter("last_name");
@@ -44,9 +45,9 @@ public class UserProfileController extends HttpServlet {
         user.setUserName(userName);
         user.setPassword(password);
         user.setUserId((int) session.getAttribute("userId"));
-        RegistrationLoginDB.userProfileUpdation(user);
-        
-        if(RegistrationLoginDB.userProfileUpdation(user)== true){
+        rlDB.userProfileUpdation(user);
+
+        if(rlDB.userProfileUpdation(user)== true){
            response.sendRedirect("personal_info.jsp");
         }
         

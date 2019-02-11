@@ -6,9 +6,11 @@
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%
-    HttpSession logoutSession = request.getSession();
-   // logoutSession.removeAttribute("");
-   
-    logoutSession.invalidate();
-            response.sendRedirect("index.jsp");
-        %>
+    HttpSession logoutsession = request.getSession(false);
+    
+    if (logoutsession != null) {
+        logoutsession.removeAttribute("loginusername");
+        logoutsession.invalidate();
+    }
+    request.getRequestDispatcher("/index.jsp").forward(request, response);
+%>

@@ -1,3 +1,4 @@
+<%@page import="connection.jdbc.module.JdbcDao"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -33,7 +34,7 @@
 
         <header class="header">
             <!-- Main Navbar-->
-            <nav class="navbar navbar-expand-lg ">
+            <nav class="navbar navbar-expand-lg">
                 <div class="search-area">
                     <div class="search-area-inner d-flex align-items-center justify-content-center">
                         <div class="close-btn"><i class="icon-close"></i></div>
@@ -61,8 +62,16 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item" ><a href="index.jsp" class="nav-link  fa fa-home" id="linkcolor"> Home</a>
                             </li>
-                            <li class="nav-item" ><a href="blog.jsp" class="nav-link   fa fa-rss " id="linkcolor"> Blog</a>
-                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="blog.jsp" class="nav-link dropdown-toggle fa fa-rss"  id="navbarDropdown" id="linkcolor" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Blog </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/software-schooling/BlogController">Blogs</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" id="linkcolor" href="#">Java Programming</a>
+                                    <a class="dropdown-item" href="#">RDMS Tutorial</a>
+                                    <a class="dropdown-item" href="#">Unix Operating System</a>
+                                </div>
+                            </li>  
                             <li class="nav-item" ><a href="post.jsp" class="nav-link active fa fa-clipboard" id="linkcolor"> Post</a>
                             </li>
                             <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
@@ -70,29 +79,29 @@
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
                             </li>
                             <%
-                                    if (session.getAttribute("loginusername") == null) {
-                                %>
+                                if (session.getAttribute("loginusername") == null) {
+                            %>
                             <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
                             </li>   
                             <%
                             } else {
                             %>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <%=session.getAttribute("loginfirstname")%>
+                                <a class="nav-link dropdown-toggle fa fa-user-secret" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <%=session.getAttribute("loginusername")%>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="personal_info.jsp">Account Setting</a>
                                     <a class="dropdown-item" href="logout.jsp">Log Out</a>
                                 </div>
                             </li>  
-                            
+
 
                         </ul>
-                                <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <div class="inset">
-                                    <img  src="img/featured-pic-2.jpeg" class="profile">
+                                    <img  src="img/profile_picture/<%=session.getAttribute("loginusername")%>.jpg" class="profile">
                                 </div>
                             </li> 
                         </ul>
@@ -108,18 +117,23 @@
                 </div>
             </nav>
         </header>
+
+
+        <%
+
+        %>
         <div class="container">
             <div class="row">
                 <!-- Latest Posts -->
                 <main class="post blog-post col-lg-8"> 
                     <div class="container">
                         <div class="post-single">
-                            <div class="post-thumbnail"><img src="img/blog-post-3.jpeg" alt="..." class="img-fluid"></div>
+                            <!--   <div class="post-thumbnail"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></div> -->
                             <div class="post-details">
                                 <div class="post-meta d-flex justify-content-between">
                                     <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
                                 </div>
-                                <h1>Diversity in Engineering: The Effect on Questions<a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+                                <h1><%  %><a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
                                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
                                         <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
                                         <div class="title"><span>John Doe</span></div></a>
@@ -127,12 +141,12 @@
                                         <div class="date"><i class="icon-clock"></i> 4 months ago</div>
                                         <div class="views"><i class="icon-eye" id="iconcolor"></i> 900</div>
                                         <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                        <div class="meta-last"><i class="fa fa-thumbs-up"></i> </div>
+
                                     </div>
                                 </div>
                                 <div class="post-body">
-                                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    <p class="lead"><%  %></p>
+                                    <p><%  %></p>
                                     <p> <img src="img/featured-pic-3.jpeg" alt="..." class="img-fluid"></p>
                                     <h3>Lorem Ipsum Dolor</h3>
                                     <p>div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus iusto voluptates deleniti similique rerum ducimus sint ex odio saepe. Sapiente quae pariatur ratione quis perspiciatis deleniti accusantium</p>
@@ -144,6 +158,8 @@
                                     </blockquote>
                                     <p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis. Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam voluptas neque soluta adipisci ad.</p>
                                 </div>
+
+                                <%  %>
                                 <div class="post-tags" id="textcolor"><a href="#" class="tag" >#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>
                                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
                                         <div class="icon prev"><i class="fa fa-angle-left"></i></div>

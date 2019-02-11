@@ -8,6 +8,22 @@
         <servlet-name>UserProfileController</servlet-name>
         <servlet-class>controller.servlet.module.UserProfileController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>FileUploadController</servlet-name>
+        <servlet-class>controller.servlet.module.FileUploadController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>LoginController</servlet-name>
+        <servlet-class>controller.servlet.module.LoginController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>BlogController</servlet-name>
+        <servlet-class>controller.servlet.module.BlogController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PostCOntroller</servlet-name>
+        <servlet-class>controller.servlet.module.PostController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationController</servlet-name>
         <url-pattern>/RegistrationController</url-pattern>
@@ -15,6 +31,22 @@
     <servlet-mapping>
         <servlet-name>UserProfileController</servlet-name>
         <url-pattern>/UserProfileController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>FileUploadController</servlet-name>
+        <url-pattern>/FileUploadController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>LoginController</servlet-name>
+        <url-pattern>/LoginController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>BlogController</servlet-name>
+        <url-pattern>/BlogController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PostCOntroller</servlet-name>
+        <url-pattern>/PostCOntroller</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

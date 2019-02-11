@@ -19,6 +19,10 @@ public class Contents {
     private int isActive;
     private Date creationDtm;
     private Date updateDtm;
+    private String imagePath;
+
+    public Contents() {
+    }
 
     public Contents(int contentId, String contentTitle, String contentText, int isActive, Date creationDtm, Date updateDtm) {
         this.contentId = contentId;
@@ -75,6 +79,14 @@ public class Contents {
 
     public void setUpdateDtm(Date updateDtm) {
         this.updateDtm = updateDtm;
+    }
+
+    public String getImagePath() {
+        return imagePath;
+    }
+
+    public void setImagePath(String imagePath) {
+        this.imagePath = imagePath;
     }
 
 }

@@ -1,6 +1,7 @@
 
 
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -29,9 +30,10 @@
     </head>
     <body>
 
+
         <header class="header">
             <!-- Main Navbar-->
-            <nav class="navbar navbar-expand-lg fixed-top">
+            <nav class="navbar navbar-expand-lg">
                 <div class="search-area">
                     <div class="search-area-inner d-flex align-items-center justify-content-center">
                         <div class="close-btn"><i class="icon-close"></i></div>
@@ -59,42 +61,47 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item" ><a href="index.jsp" class="nav-link active  fa fa-home" id="linkcolor">Home</a>
                             </li>
-                            <li class="nav-item" ><a href="blog.jsp" class="nav-link fa fa-rss " id="linkcolor"> Blog</a>
-                            </li>
+                            <li class="nav-item dropdown">
+                                <a href="/software-schooling/BlogControlle" class="nav-link dropdown-toggle fa fa-rss"  id="navbarDropdown" id="linkcolor" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Blog </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="/software-schooling/BlogController">Blogs</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Java Programming</a>
+                                    <a class="dropdown-item" href="#">RDMS Tutorial</a>
+                                    <a class="dropdown-item" href="#">Unix Operating System</a>
+                                </div>
+                            </li>  
                             <li class="nav-item" ><a href="post.jsp" class="nav-link fa fa-clipboard" id="linkcolor"> Post</a>
                             </li>
                             <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
-                               
+
                             </li>
-                             <%
-                                    if (session.getAttribute("loginusername") == null) {
-                                %>
+                            <%
+                                if (session.getAttribute("loginusername") == null) {
+                            %>
                             <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
                             </li>   
                             <%
                             } else {
                             %>
-<<<<<<< HEAD
-                            <li class="nav-item" ><a href="personal_info.jsp" class="nav-link fa" id="linkcolor"><%=session.getAttribute("loginusername")%></a>
-                            </li>    
-=======
+
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <%=session.getAttribute("loginfirstname")%>
+                                <a class="nav-link dropdown-toggle fa fa-user-secret" href="#" id="linkcolor" role="button" data-toggle="dropdown">
+                                    <%=session.getAttribute("loginusername")%>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="personal_info.jsp">Account Setting</a>
                                     <a class="dropdown-item" href="logout.jsp">Log Out</a>
                                 </div>
-                            </li>  
->>>>>>> abbd9e42680210bae202d0a91ab484ab50130239
+                            </li>
+
                         </ul>
                         <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <div class="inset">
-                                    <img  src="img/partho.jpg" class="profile">
+                                    <img  src="img/profile_picture/<%=session.getAttribute("loginusername")%>.jpg" class="profile">
                                 </div>
                             </li> 
                         </ul>

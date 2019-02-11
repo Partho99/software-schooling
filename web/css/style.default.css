@@ -448,10 +448,10 @@ div[class*="-btn"] {
 */
 .navbar {
     background: #fff;
-    padding-top: 20px !important;
-    padding-bottom: 20px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
     z-index: 9998;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 0px solid #ddd;
 }
 
 .navbar .langs a:first-of-type,
@@ -2622,3 +2622,13 @@ a.text-dark:focus, a.text-dark:hover {
 }
 
 /* personal info css */
+.dropdown:hover>.dropdown-menu {
+  display: block;
+}
+
+/* navbar shrink in size*/
+/*
+.heightofnav{
+    background-color: lightyellow;
+    height: 50px;
+}*/

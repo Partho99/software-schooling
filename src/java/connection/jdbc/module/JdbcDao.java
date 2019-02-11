@@ -18,23 +18,23 @@ import java.sql.Statement;
  */
 public class JdbcDao {
 
-    public static Connection connection = null;
-    public static ResultSet resultSet = null;
-    public static Statement statement = null;
-    public static PreparedStatement ps = null;
+    protected Connection connection = null;
+    protected ResultSet resultSet = null;
+    protected Statement statement = null;
+    protected PreparedStatement ps = null;
 
     public JdbcDao() {
 
     }
 
-    public static void openConnection() throws SQLException, ClassNotFoundException {
+    public  void openConnection() throws SQLException, ClassNotFoundException {
 
         Class.forName("com.mysql.jdbc.Driver");
         connection =(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/softwareschooling", "root", "44633");
 
     }
 
-    public static void closeConnection() {
+    public  void closeConnection() {
         try {
             if (resultSet != null) {
                 resultSet.close();

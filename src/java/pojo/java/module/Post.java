@@ -19,6 +19,7 @@ public class Post {
     private Date creationDtm;
     private Date updateDtm;
 
+    
     public Post(int postId, String title, int isActive, Date creationDtm, Date updateDtm) {
         this.postId = postId;
         this.title = title;

@@ -1,7 +1,12 @@
+<%@page import="pojo.java.module.Contents"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="connection.jdbc.module.JdbcDao"%>
+
+
 <!DOCTYPE html>
 <html>
     <head>
-        
+
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Bootstrap Blog - B4 Template by Bootstrap Temple</title>
@@ -24,7 +29,7 @@
         <link rel="stylesheet" href="css/custom.css">
         <!-- Favicon-->
         <link rel="shortcut icon" href="favicon.png">
-       
+
 
 
         <!-- Tweaks for older IEs--><!--[if lt IE 9]>
@@ -35,7 +40,7 @@
 
         <header class="header">
             <!-- Main Navbar-->
-            <nav class="navbar navbar-expand-lg">
+            <nav class="navbar navbar-expand-lg  ">
                 <div class="search-area">
                     <div class="search-area-inner d-flex align-items-center justify-content-center">
                         <div class="close-btn"><i class="icon-close"></i></div>
@@ -63,25 +68,32 @@
                         <ul class="navbar-nav ml-auto">
                             <li class="nav-item" ><a href="index.jsp" class="nav-link   fa fa-home" id="linkcolor"> Home</a>
                             </li>
-                            <li class="nav-item" ><a href="blog.jsp" class="nav-link active fa fa-rss " id="linkcolor"> Blog</a>
-                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle fa fa-rss" href="blog.jsp" id="navbarDropdown" id="linkcolor" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Blog </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="#">Java Programming</a>
+                                    <a class="dropdown-item" href="#">RDMS Tutorial</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Unix Operating System</a>
+                                </div>
+                            </li>  
                             <li class="nav-item" ><a href="post.jsp" class="nav-link fa fa-clipboard" id="linkcolor"> Post</a>
                             </li>
                             <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
                             </li>
-                             <%
-                                    if (session.getAttribute("loginusername") == null) {
-                                %>
+                            <%
+                                if (session.getAttribute("loginusername") == null) {
+                            %>
                             <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
                             </li>   
                             <%
                             } else {
                             %>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    <%=session.getAttribute("loginfirstname")%>
+                                <a class="nav-link dropdown-toggle fa fa-user-secret" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <%=session.getAttribute("loginusername")%>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="personal_info.jsp">Account Setting</a>
@@ -90,10 +102,10 @@
                             </li>  
 
                         </ul>
-                                <ul class="nav navbar-nav navbar-right">
+                        <ul class="nav navbar-nav navbar-right">
                             <li>
                                 <div class="inset">
-                                    <img  src="img/featured-pic-2.jpeg" class="profile">
+                                    <img  src="img/profile_picture/<%=session.getAttribute("loginusername")%>.jpg" class="profile">
                                 </div>
                             </li> 
                         </ul>
@@ -109,23 +121,33 @@
                 </div>
             </nav>
         </header>
+        <%
+            ArrayList<Contents> listItem = (ArrayList<Contents>) request.getAttribute("BlogContents");
+
+            for (int i = 0; i < listItem.size();) {
+
+
+        %>
+
         <div class="container">
             <div class="row">
                 <!-- Latest Posts -->
                 <main class="posts-listing col-lg-8"> 
                     <div class="container">
                         <div class="row">
-                            
+
                             <!-- post -->
                             <div class="post col-xl-6" id="imghov">
-                                <div class="post-thumbnail" ><a href="post.html" ><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid" ></a></div>
+                                <div class="post-thumbnail" ><a href="post.jsp" ><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid" ></a></div>
                                 <div class="post-details">
                                     <div class="post-meta d-flex justify-content-between">
                                         <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Business</a></div>
-                                    </div><a href="post.html" >
-                                        <h3 class="h4" id="txt">Alberto Savoia Can Teach You About Interior</h3></a>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                        <div class="category"><a href="#" id="linkcolor">Sceince & Technology</a></div>
+                                    </div><a href="post.jsp" >
+                                        <h3 class="h4" id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
+
+
+                                    <p class="text-muted"><%=listItem.get(i).getContentText().substring(0, 145)%></p>
                                     <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>John Doe</span></div></a>
@@ -134,16 +156,21 @@
                                     </div>
                                 </div>
                             </div>
+                            <% i++;%>
+
+
+
+
                             <!-- post             -->
                             <div class="post col-xl-6" id="imghov">
                                 <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-2.jpg" alt="..." class="img-fluid"></a></div>
                                 <div class="post-details">
                                     <div class="post-meta d-flex justify-content-between">
                                         <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Business</a></div>
+                                        <div class="category"><a href="#">Sceince & Technology</a></div>
                                     </div><a href="post.html">
-                                        <h3 class="h4" id="txt">Alberto Savoia Can Teach You About Interior</h3></a>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                        <h3 class="h4" id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
+                                    <p class="text-muted"><%=listItem.get(i).getContentText().substring(0, 145)%></p>
                                     <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="img/avatar-2.jpg" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>John Doe</span></div></a>
@@ -152,16 +179,20 @@
                                     </div>
                                 </div>
                             </div>
+
+
+                            <% i++;%>
+
                             <!-- post             -->
                             <div class="post col-xl-6" id="imghov">
                                 <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-3.jpeg" alt="..." class="img-fluid"></a></div>
                                 <div class="post-details">
                                     <div class="post-meta d-flex justify-content-between">
                                         <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Business</a></div>
+                                        <div class="category"><a href="#">Sceince & Technology</a></div>
                                     </div><a href="post.html">
-                                        <h3 class="h4"  id="txt">Alberto Savoia Can Teach You About Interior</h3></a>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                        <h3 class="h4"  id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
+                                    <p class="text-muted"><%=listItem.get(i).getContentText().substring(0, 145)%></p>
                                     <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>John Doe</span></div></a>
@@ -170,16 +201,18 @@
                                     </div>
                                 </div>
                             </div>
+                            <% i++;%>
                             <!-- post -->
+
                             <div class="post col-xl-6" id="imghov">
                                 <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-4.jpeg" alt="..." class="img-fluid"></a></div>
                                 <div class="post-details" >
                                     <div class="post-meta d-flex justify-content-between">
                                         <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Business</a></div>
+                                        <div class="category"><a href="#">Sceince & Technology</a></div>
                                     </div><a href="post.html">
-                                        <h3 class="h4" id="txt">Alberto Savoia Can Teach You About Interior</h3></a>
-                                    <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
+                                        <h3 class="h4" id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
+                                    <p class="text-muted"><%=listItem.get(i).getContentText().substring(0, 145)%></p>
                                     <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>John Doe</span></div></a>
@@ -189,12 +222,15 @@
                                 </div>
                             </div>
                         </div>
+                        <% i++; %>
+
+                        <% }%>
                         <!-- Pagination -->
                         <nav aria-label="Page navigation example">
                             <ul class="pagination pagination-template d-flex justify-content-center">
                                 <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
                                 <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                                <li class="page-item"><a href="#" class="page-link">2</a></li>
+                                <li class="page-item"><a href="" class="page-link">2</a></li>
                                 <li class="page-item"><a href="#" class="page-link">3</a></li>
                                 <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
                             </ul>

@@ -7,6 +7,7 @@ package controller.servlet.module;
 
 import connection.jdbc.module.RegistrationLoginDB;
 import java.io.IOException;
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -29,14 +30,17 @@ public class RegistrationController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+         RegistrationLoginDB rlDB = new RegistrationLoginDB();
 
         java.util.Date dt = new java.util.Date();
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String currentTime = sdf.format(dt);
         String updateTime = sdf.format(dt);
 
+        HttpSession session = request.getSession();
+
         //for registration
-        
         String firstName = request.getParameter("firstname");
         String lastName = request.getParameter("lastname");
         String email = request.getParameter("email");
@@ -44,43 +48,26 @@ public class RegistrationController extends HttpServlet {
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmpassword");
 
-       User user = new User();
-       
-       user.setFirstName(firstName);
-       user.setLastName(lastName);
-       user.setEmail(email);
-       user.setUserName(userName);
-       user.setPassword(password);
-       user.setCreationDtm(dt);
-       user.setUpdateDtm(dt);
-       
-       
-        RegistrationLoginDB.userRegistration(user);
-        
-        //for login
-        
-        String loginUserName = request.getParameter("loginusername");
-        String loginPassword = request.getParameter("loginpassword");
-        
-        User loginUser = new User();
-        
-        loginUser.setUserName(loginUserName);
-        loginUser.setPassword(loginPassword);
-        
-        RegistrationLoginDB.userLogin(loginUser);
-     
-        if (RegistrationLoginDB.userLogin(loginUser) == true) {
-            HttpSession session = request.getSession();
-            session.setAttribute("loginfirstname", loginUser.getFirstName());
-            session.setAttribute("loginlastname", loginUser.getLastName());
-            session.setAttribute("loginemail", loginUser.getEmail());
-            session.setAttribute("loginusername", loginUser.getUserName());
-            session.setAttribute("userId", loginUser.getUserId());
-            
-            response.sendRedirect("index.jsp");
-        } else {
-        }
+        User user = new User();
+        if (!firstName.isEmpty() || !lastName.isEmpty() || !email.isEmpty() || !userName.isEmpty() || !password.isEmpty()) {
+            user.setFirstName(firstName);
+            user.setLastName(lastName);
+            user.setEmail(email);
+            user.setUserName(userName);
+            user.setPassword(LoginController.hashPassword(password));
+            user.setCreationDtm(dt);
+            user.setUpdateDtm(dt);
 
+            rlDB.userRegistration(user);
+            if (rlDB.afterCompleteRegistration(user) == true) {
+                session.setAttribute("loginusername", user.getUserName());
+                session.setAttribute("loginuserid", user.getUserId());
+                RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
+                        rd.forward(request, response);
+            }
+        } else {
+            response.sendRedirect("login_register.jsp");
+        }
     }
 
     @Override

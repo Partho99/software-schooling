@@ -34,14 +34,14 @@
                     <div class="card-body">
                         <div class="row">
                             <div class="col-md">
-                                <form class="form" id="login-form" action="RegistrationController" method="post" role="form" style="display: block;">
+                                <form class="form" id="login-form" action="LoginController" method="post" role="form" style="display: block;">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
-                                        <input type="text" name="loginusername" id="loginusername" tabindex="1" class="form-control" placeholder="User Name/Email" value="" required>
+                                        <input type="text" name="loginusername" id="loginusername" tabindex="1" class="form-control" placeholder="User Name/Email"  required>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-lock" ></i></span>
-                                        <input type="password" name="loginpassword" id="loginpassword" tabindex="2" class="form-control" placeholder="Password" required>
+                                        <input type="password" name="loginpassword" id="loginpassword" tabindex="2" class="form-control" placeholder="Password"  required>
                                     </div>
                                     <div class="form-group text-center">
                                         <input type="checkbox" tabindex="3" class="" name="remember" id="remember">
@@ -64,31 +64,31 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form id="register-form" action="RegistrationController" method="post" role="form" style="display: none;">
+                                <form id="register-form" action="BlogController" method="post" role="form" style="display: none;">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
-                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" required="hello">
+                                        <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" required>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
-                                        <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="">
+                                        <input type="text" name="lastname" id="lastname" tabindex="1" class="form-control" placeholder="Last Name" value="" required>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-envelope" ></i></span>
-                                        <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                                        <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="" required>
                                     </div>
                                     <div class="form-group input-group ">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
-                                        <input type="text" name="username" id="username" tabindex="1" class="form-control " placeholder="Username" value="">
+                                        <input type="text" name="username" id="username" tabindex="1" class="form-control " placeholder="Username" value="" required>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-lock" ></i></span>
-                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" ">
+                                        <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password" required>
                                     </div>
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-lock" ></i></span>
 
-                                        <input type="password" name="confirmpassword" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password" ">
+                                        <input type="password" name="confirmpassword" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password"  required>
 
                                     </div>
 
