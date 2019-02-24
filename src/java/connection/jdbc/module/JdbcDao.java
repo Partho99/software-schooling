@@ -23,18 +23,23 @@ public class JdbcDao {
     protected Statement statement = null;
     protected PreparedStatement ps = null;
 
+    protected String driver = "com.mysql.jdbc.Driver";
+    protected String databaseurl = "jdbc:mysql://localhost:3306/softwareschooling";
+    protected String user = "root";
+    protected String password = "44633";
+
     public JdbcDao() {
 
     }
 
-    public  void openConnection() throws SQLException, ClassNotFoundException {
+    public void openConnection() throws SQLException, ClassNotFoundException {
 
-        Class.forName("com.mysql.jdbc.Driver");
-        connection =(Connection) DriverManager.getConnection("jdbc:mysql://localhost:3306/softwareschooling", "root", "44633");
+        Class.forName(driver);
+        connection = (Connection) DriverManager.getConnection(databaseurl, user, password);
 
     }
 
-    public  void closeConnection() {
+    public void closeConnection() {
         try {
             if (resultSet != null) {
                 resultSet.close();

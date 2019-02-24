@@ -64,7 +64,7 @@
                                         </div>
                                     </div>
                                 </form>
-                                <form id="register-form" action="BlogController" method="post" role="form" style="display: none;">
+                                <form id="register-form" action="RegistrationController" method="post" role="form" style="display: none;">
                                     <div class="form-group input-group">
                                         <span class="input-group-addon" id="iconcolor"><i class="fa fa-user" ></i></span>
                                         <input type="text" name="firstname" id="firstname" tabindex="1" class="form-control" placeholder="First Name" value="" required>

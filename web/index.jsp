@@ -62,7 +62,7 @@
                             <li class="nav-item" ><a href="index.jsp" class="nav-link active  fa fa-home" id="linkcolor">Home</a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a href="/software-schooling/BlogControlle" class="nav-link dropdown-toggle fa fa-rss"  id="navbarDropdown" id="linkcolor" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Blog </a>
+                                <a href="/software-schooling/BlogController" class="nav-link dropdown-toggle fa fa-rss"  id="navbarDropdown" id="linkcolor" role="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Blog </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="/software-schooling/BlogController">Blogs</a>
                                     <div class="dropdown-divider"></div>
@@ -92,7 +92,8 @@
                                     <%=session.getAttribute("loginusername")%>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="personal_info.jsp">Account Setting</a>
+                                    <a class="dropdown-item" href="personal_info.jsp">Personal Information</a>
+                                    <a class="dropdown-item" href="createpost.jsp">Create Post</a>
                                     <a class="dropdown-item" href="logout.jsp">Log Out</a>
                                 </div>
                             </li>

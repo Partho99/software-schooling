@@ -34,7 +34,7 @@ public class FileUploadController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
         RegistrationLoginDB rlDB = new RegistrationLoginDB();
 
         ProfileImage userImage = new ProfileImage();

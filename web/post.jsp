@@ -91,7 +91,8 @@
                                     <%=session.getAttribute("loginusername")%>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="personal_info.jsp">Account Setting</a>
+                                    <a class="dropdown-item" href="personal_info.jsp">Personal Information</a>
+                                    <a class="dropdown-item" href="createpost.jsp">Create Post</a>
                                     <a class="dropdown-item" href="logout.jsp">Log Out</a>
                                 </div>
                             </li>  

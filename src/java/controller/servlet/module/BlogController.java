@@ -9,6 +9,8 @@ import connection.jdbc.module.ContentsDB;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -28,9 +30,12 @@ public class BlogController extends HttpServlet {
             throws ServletException, IOException {
 
         ArrayList<Contents> contents = new ArrayList<>();
+        ArrayList<Contents> latestpost = new ArrayList<>();
         ContentsDB cDB = new ContentsDB();
+        
         try {
             contents = cDB.getAllContents();
+            latestpost = cDB.latestPost();
 
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(BlogController.class.getName()).log(Level.SEVERE, null, ex);
@@ -42,7 +47,9 @@ public class BlogController extends HttpServlet {
 
         
             request.setAttribute("BlogContents", contents);
+            request.setAttribute("latestpost", latestpost);
             request.getRequestDispatcher("blog.jsp").forward(request, response);
+          // response.sendRedirect("blog.jsp");
         
 
     }

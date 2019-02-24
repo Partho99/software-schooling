@@ -1,3 +1,6 @@
+<%@page import="java.util.Iterator"%>
+<%@page import="java.util.Set"%>
+<%@page import="java.util.HashSet"%>
 <%@page import="pojo.java.module.Contents"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="connection.jdbc.module.JdbcDao"%>
@@ -32,12 +35,13 @@
 
 
 
+
         <!-- Tweaks for older IEs--><!--[if lt IE 9]>
             <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     </head>
     <body>
-
+        <script src="js/login.js"></script>
         <header class="header">
             <!-- Main Navbar-->
             <nav class="navbar navbar-expand-lg  ">
@@ -96,7 +100,8 @@
                                     <%=session.getAttribute("loginusername")%>
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="personal_info.jsp">Account Setting</a>
+                                    <a class="dropdown-item" href="personal_info.jsp">Personal Information</a>
+                                    <a class="dropdown-item" href="createpost.jsp">Create Post</a>
                                     <a class="dropdown-item" href="logout.jsp">Log Out</a>
                                 </div>
                             </li>  
@@ -121,90 +126,31 @@
                 </div>
             </nav>
         </header>
-        <%
-            ArrayList<Contents> listItem = (ArrayList<Contents>) request.getAttribute("BlogContents");
 
-            for (int i = 0; i < listItem.size();) {
-
-
-        %>
 
         <div class="container">
             <div class="row">
                 <!-- Latest Posts -->
+               
                 <main class="posts-listing col-lg-8"> 
+                    
+ 
                     <div class="container">
+        
+                        
+                 
                         <div class="row">
-
-                            <!-- post -->
-                            <div class="post col-xl-6" id="imghov">
-                                <div class="post-thumbnail" ><a href="post.jsp" ><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid" ></a></div>
-                                <div class="post-details">
-                                    <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#" id="linkcolor">Sceince & Technology</a></div>
-                                    </div><a href="post.jsp" >
-                                        <h3 class="h4" id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
-
-
-                                    <p class="text-muted"><%=listItem.get(i).getContentText().substring(0, 145)%></p>
-                                    <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>John Doe</span></div></a>
-                                        <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <% i++;%>
-
-
-
-
-                            <!-- post             -->
-                            <div class="post col-xl-6" id="imghov">
-                                <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-2.jpg" alt="..." class="img-fluid"></a></div>
-                                <div class="post-details">
-                                    <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Sceince & Technology</a></div>
-                                    </div><a href="post.html">
-                                        <h3 class="h4" id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
-                                    <p class="text-muted"><%=listItem.get(i).getContentText().substring(0, 145)%></p>
-                                    <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="img/avatar-2.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>John Doe</span></div></a>
-                                        <div class="date"><i class="icon-clock"></i> 2 months ago</div>
-                                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                    </div>
-                                </div>
-                            </div>
-
-
-                            <% i++;%>
-
-                            <!-- post             -->
-                            <div class="post col-xl-6" id="imghov">
-                                <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-3.jpeg" alt="..." class="img-fluid"></a></div>
-                                <div class="post-details">
-                                    <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
-                                        <div class="category"><a href="#">Sceince & Technology</a></div>
-                                    </div><a href="post.html">
-                                        <h3 class="h4"  id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
-                                    <p class="text-muted"><%=listItem.get(i).getContentText().substring(0, 145)%></p>
-                                    <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
-                                            <div class="avatar"><img src="img/avatar-3.jpg" alt="..." class="img-fluid"></div>
-                                            <div class="title"><span>John Doe</span></div></a>
-                                        <div class="date"><i class="icon-clock"></i> 3 months ago</div>
-                                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <% i++;%>
+                   
+                   
                             <!-- post -->
 
+                                                                     <%
+                    ArrayList<Contents> listItem = (ArrayList<Contents>) request.getAttribute("BlogContents");
+                    for (int i = 0; i < listItem.size(); i++) {
+                %>
+
                             <div class="post col-xl-6" id="imghov">
+                        
                                 <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-4.jpeg" alt="..." class="img-fluid"></a></div>
                                 <div class="post-details" >
                                     <div class="post-meta d-flex justify-content-between">
@@ -212,7 +158,7 @@
                                         <div class="category"><a href="#">Sceince & Technology</a></div>
                                     </div><a href="post.html">
                                         <h3 class="h4" id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
-                                    <p class="text-muted"><%=listItem.get(i).getContentText().substring(0, 145)%></p>
+                                        <p class="text-muted"><%=listItem.get(i).getContentText().substring(0,15) %></p>
                                     <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>John Doe</span></div></a>
@@ -220,13 +166,17 @@
                                         <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                                     </div>
                                 </div>
+                                 
                             </div>
-                        </div>
-                        <% i++; %>
 
-                        <% }%>
+                                    <% }%> 
+                                  
+
+                        </div>
+                                    
+                        
                         <!-- Pagination -->
-                        <nav aria-label="Page navigation example">
+                      <!--   <nav aria-label="Page navigation example">
                             <ul class="pagination pagination-template d-flex justify-content-center">
                                 <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
                                 <li class="page-item"><a href="#" class="page-link active">1</a></li>
@@ -234,7 +184,7 @@
                                 <li class="page-item"><a href="#" class="page-link">3</a></li>
                                 <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
                             </ul>
-                        </nav>
+                        </nav> -->
                     </div>
                 </main>
                 <aside class="col-lg-4">
@@ -251,38 +201,32 @@
                         </form>
                     </div>
                     <!-- Widget [Latest Posts Widget]        -->
+                    
                     <div class="widget latest-posts">
                         <header>
                             <h3 class="h6">Latest Posts</h3>
                         </header>
+                        <%
+
+                            ArrayList<Contents> latestpost = (ArrayList<Contents>) request.getAttribute("latestpost");
+
+                            for(Contents contents: latestpost){
+
+
+                        %>
+                        
                         <div class="blog-posts"><a href="#">
                                 <div class="item d-flex align-items-center" id="imghov">
                                     <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong id="txt">Alberto Savoia Can Teach You About</strong>
+                                    <div class="title"><strong id="txt"><%out.print(contents.getContentTitle()); %></strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views"><i class="icon-eye"></i> 500</div>
                                             <div class="comments"><i class="icon-comment"></i>12</div>
                                         </div>
                                     </div>
-                                </div></a><a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
-                                </div></a><a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
-                                </div></a></div>
+                                </div></a>
+                        </div>
+                        <% }%>
                     </div>
                     <!-- Widget [Categories Widget]-->
                     <div class="widget categories">
@@ -296,7 +240,7 @@
                         <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Local</a><span>25</span></div>
                     </div>
                     <!-- Widget [Tags Cloud Widget]-->
-                    <div class="widget tags">       
+                    <div class="widget tags">  
                         <header>
                             <h3 class="h6">Tags</h3>
                         </header>

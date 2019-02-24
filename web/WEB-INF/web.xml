@@ -21,7 +21,7 @@
         <servlet-class>controller.servlet.module.BlogController</servlet-class>
     </servlet>
     <servlet>
-        <servlet-name>PostCOntroller</servlet-name>
+        <servlet-name>PostController</servlet-name>
         <servlet-class>controller.servlet.module.PostController</servlet-class>
     </servlet>
     <servlet-mapping>
@@ -45,8 +45,8 @@
         <url-pattern>/BlogController</url-pattern>
     </servlet-mapping>
     <servlet-mapping>
-        <servlet-name>PostCOntroller</servlet-name>
-        <url-pattern>/PostCOntroller</url-pattern>
+        <servlet-name>PostController</servlet-name>
+        <url-pattern>/PostController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
