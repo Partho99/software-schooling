@@ -92,7 +92,7 @@
                             <%
                                 if (session.getAttribute("loginusername") == null) {
                             %>
-                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
+                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Log in</a>
                             </li>   
                             <%
                             } else {

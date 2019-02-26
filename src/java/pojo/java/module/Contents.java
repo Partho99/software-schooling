@@ -20,17 +20,19 @@ public class Contents {
     private Date creationDtm;
     private Date updateDtm;
     private String imagePath;
+    private int userId;
 
     public Contents() {
     }
 
-    public Contents(int contentId, String contentTitle, String contentText, int isActive, Date creationDtm, Date updateDtm) {
+    public Contents(int contentId, String contentTitle, String contentText, int isActive, Date creationDtm, Date updateDtm, int userId) {
         this.contentId = contentId;
         this.contentTitle = contentTitle;
         this.contentText = contentText;
         this.isActive = isActive;
         this.creationDtm = creationDtm;
         this.updateDtm = updateDtm;
+        this.userId = userId;
     }
 
     public int getContentId() {
@@ -88,5 +90,14 @@ public class Contents {
     public void setImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
+
+    public int getUserId() {
+        return userId;
+    }
+
+    public void setUserId(int userId) {
+        this.userId = userId;
+    }
+    
 
 }

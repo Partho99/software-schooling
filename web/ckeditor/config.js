@@ -4,8 +4,8 @@
  */
 
 CKEDITOR.editorConfig = function( config ) {
-	config.language = 'es';
-	config.uiColor = '#036d01';
+	config.language = 'en';
+	config.uiColor = '#1dc103';
 	config.height = 300;
         config.width = 1500;
 	config.toolbarCanCollapse = true;

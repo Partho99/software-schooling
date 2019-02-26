@@ -1,3 +1,7 @@
+<%@page import="pojo.java.module.Comment"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="pojo.java.module.Contents"%>
+<%@page import="pojo.java.module.Contents"%>
 <%@page import="connection.jdbc.module.JdbcDao"%>
 <!DOCTYPE html>
 <html>
@@ -25,11 +29,10 @@
         <!-- Favicon-->
         <link rel="shortcut icon" href="favicon.png">
 
-        <!-- Tweaks for older IEs--><!--[if lt IE 9]>
-            <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-            <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+        
     </head>
     <body>
+
 
 
         <header class="header">
@@ -81,7 +84,7 @@
                             <%
                                 if (session.getAttribute("loginusername") == null) {
                             %>
-                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
+                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Log in</a>
                             </li>   
                             <%
                             } else {
@@ -131,6 +134,10 @@
                         <div class="post-single">
                             <!--   <div class="post-thumbnail"><img src="img/blog-post-1.jpeg" alt="..." class="img-fluid"></div> -->
                             <div class="post-details">
+
+                                <%  ArrayList<Contents> postItem = (ArrayList<Contents>) request.getAttribute("postitem");
+                                    for (int i = 0; i < postItem.size(); i++) {
+                                %>
                                 <div class="post-meta d-flex justify-content-between">
                                     <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
                                 </div>
@@ -139,28 +146,24 @@
                                         <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
                                         <div class="title"><span>John Doe</span></div></a>
                                     <div class="d-flex align-items-center flex-wrap">       
-                                        <div class="date"><i class="icon-clock"></i> 4 months ago</div>
+                                        <div class="date"><i class="icon-clock"></i><%=postItem.get(i).getCreationDtm()%></div>
                                         <div class="views"><i class="icon-eye" id="iconcolor"></i> 900</div>
                                         <div class="comments meta-last"><i class="icon-comment"></i>12</div>
 
                                     </div>
                                 </div>
+
                                 <div class="post-body">
-                                    <p class="lead"><%  %></p>
-                                    <p><%  %></p>
+
+
+                                    <p class="lead"></p>
+                                    <p><%%></p>
                                     <p> <img src="img/featured-pic-3.jpeg" alt="..." class="img-fluid"></p>
-                                    <h3>Lorem Ipsum Dolor</h3>
-                                    <p>div Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda temporibus iusto voluptates deleniti similique rerum ducimus sint ex odio saepe. Sapiente quae pariatur ratione quis perspiciatis deleniti accusantium</p>
-                                    <blockquote class="blockquote">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
-                                        <footer class="blockquote-footer">Someone famous in
-                                            <cite title="Source Title">Source Title</cite>
-                                        </footer>
-                                    </blockquote>
-                                    <p>quasi nam. Libero dicta eum recusandae, commodi, ad, autem at ea iusto numquam veritatis, officiis. Accusantium optio minus, voluptatem? Quia reprehenderit, veniam quibusdam provident, fugit iusto ullam voluptas neque soluta adipisci ad.</p>
+                                    <h3><%=postItem.get(i).getContentTitle()%></h3>
+                                    <p><%=postItem.get(i).getContentText()%></p>
+
                                 </div>
 
-                                <%  %>
                                 <div class="post-tags" id="textcolor"><a href="#" class="tag" >#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>
                                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
                                         <div class="icon prev"><i class="fa fa-angle-left"></i></div>
@@ -175,52 +178,37 @@
                                     <header>
                                         <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
                                     </header>
+
+                                    <%  ArrayList<Comment> comments = (ArrayList<Comment>) request.getAttribute("comments");
+                                        for (Comment comment : comments) {
+                                    %>
                                     <div class="comment">
                                         <div class="comment-header d-flex justify-content-between">
                                             <div class="user d-flex align-items-center">
-                                                <div class="image"><img src="img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
+                                                <div class="image"><img src="img/profile_picture/<%=session.getAttribute("loginusername")%>.jpg" alt="..." class="img-fluid rounded-circle"></div>
                                                 <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
                                             </div>
                                         </div>
                                         <div class="comment-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
+                                            <p><%=comment.getCommentText()%></p>
                                         </div>
                                     </div>
-                                    <div class="comment">
-                                        <div class="comment-header d-flex justify-content-between">
-                                            <div class="user d-flex align-items-center">
-                                                <div class="image"><img src="img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
-                                                <div class="title"><strong>Nikolas</strong><span class="date">May 2016</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="comment-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                        </div>
-                                    </div>
-                                    <div class="comment">
-                                        <div class="comment-header d-flex justify-content-between">
-                                            <div class="user d-flex align-items-center">
-                                                <div class="image"><img src="img/user.svg" alt="..." class="img-fluid rounded-circle"></div>
-                                                <div class="title"><strong>John Doe</strong><span class="date">May 2016</span></div>
-                                            </div>
-                                        </div>
-                                        <div class="comment-body">
-                                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</p>
-                                        </div>
-                                    </div>
+
+                                    <% } %>
                                 </div>
+
+                                <%
+
+                                    HttpSession session1 = request.getSession();
+                                    String username =(String) session1.getAttribute("loginusername");
+                                    if (username != null) {
+                                %>
                                 <div class="add-comment">
                                     <header>
                                         <h3 class="h6">Leave a reply</h3>
                                     </header>
-                                    <form action="#" class="commenting-form">
+                                    <form action="CommentsController?contentId=<%=postItem.get(i).getContentId()%>" method="post" class="commenting-form">
                                         <div class="row">
-                                            <div class="form-group col-md-6">
-                                                <input type="text" name="username" id="username" placeholder="Name" class="form-control">
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <input type="email" name="username" id="useremail" placeholder="Email Address (will not be published)" class="form-control">
-                                            </div>
                                             <div class="form-group col-md-12">
                                                 <textarea name="usercomment" id="usercomment" placeholder="Type your comment" class="form-control"></textarea>
                                             </div>
@@ -230,6 +218,12 @@
                                         </div>
                                     </form>
                                 </div>
+                                <% } else {
+
+                                %>
+                                <a href="login_register.jsp" >Please login to comment</a> 
+                                <% } %>
+                                <% } %>
                             </div>
                         </div>
                     </div>
@@ -248,39 +242,30 @@
                         </form>
                     </div>
                     <!-- Widget [Latest Posts Widget]        -->
-                    <div class="widget latest-posts">
+
+
+                    <div class="widget latest-posts ">
                         <header>
                             <h3 class="h6">Latest Posts</h3>
                         </header>
-                        <div class="blog-posts"><a href="#">
+                        <%
+                            ArrayList<Contents> listItem = (ArrayList<Contents>) request.getAttribute("latestitem");
+                            for (Contents contents : listItem) {
+                        %>
+                        <div class="blog-posts"><a href="/software-schooling/PostController?contentId=<%=contents.getContentId()%>">
                                 <div class="item d-flex align-items-center">
                                     <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong >Alberto Savoia Can Teach You About</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
-                                </div></a><a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="img/small-thumbnail-2.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
-                                        <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
-                                            <div class="comments"><i class="icon-comment"></i>12</div>
-                                        </div>
-                                    </div>
-                                </div></a><a href="#">
-                                <div class="item d-flex align-items-center">
-                                    <div class="image"><img src="img/small-thumbnail-3.jpg" alt="..." class="img-fluid"></div>
-                                    <div class="title"><strong>Alberto Savoia Can Teach You About</strong>
+                                    <div class="title"><strong ><%out.print(contents.getContentTitle()); %></strong>
                                         <div class="d-flex align-items-center">
                                             <div class="views"><i class="icon-eye"></i> 500</div>
                                             <div class="comments"><i class="icon-comment"></i>12</div>
                                         </div>
                                     </div>
                                 </div></a></div>
+                                <% }%>
                     </div>
+
+
                     <!-- Widget [Categories Widget]-->
                     <div class="widget categories">
                         <header>
@@ -298,11 +283,11 @@
                             <h3 class="h6">Tags</h3>
                         </header>
                         <ul class="list-inline">
-                            <li class="list-inline-item"><a href="#" class="tag">#Business</a></li>
+                            <li class="list-inline-item"><a href="#" class="tag">#Java</a></li>
+                            <li class="list-inline-item"><a href="#" class="tag">#MySql</a></li>
+                            <li class="list-inline-item"><a href="#" class="tag">#Operating System</a></li>
+                            <li class="list-inline-item"><a href="#" class="tag">#Linux</a></li>
                             <li class="list-inline-item"><a href="#" class="tag">#Technology</a></li>
-                            <li class="list-inline-item"><a href="#" class="tag">#Fashion</a></li>
-                            <li class="list-inline-item"><a href="#" class="tag">#Sports</a></li>
-                            <li class="list-inline-item"><a href="#" class="tag">#Economy</a></li>
                         </ul>
                     </div>
                 </aside>

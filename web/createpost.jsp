@@ -16,28 +16,25 @@
     </head>
     <body>
 
-        <form  id="form" action="PostController" method="post">
+        <form  id="form" action="BlogController" method="post">
 
-            <div align="center">
-                <h1>Enter your Title </h1><br/>
+            <div align="left">
+                <h1>Enter Post Title </h1><br/>
                 <input type="text" name="title" id="firstname" style="width:50%" required>
-                <h1>Enter your details</h1><br/>
-                <textarea id="editor" name="description"></textarea>
+                <h1>Enter Post details</h1><br/>
+                <textarea id="editor" name="description"></textarea> <input type="file" name="file" style="width:200px" accept="image/*">
                 <input type="submit" value="Submit a Post">
             </div>
 
         </form>
-
-
-
-
+        
         <script>
             CKEDITOR.replace('editor');
             $("form").submit(function (e) {
                 var messageLength = CKEDITOR.instances['editor'].getData().replace(/<[^>]*>/gi, '').length;
                 if (!messageLength) {
-                    alert('Details not be blank');
-                    // console.warn("This is a warning!");        
+                    alert('Post Details cannot be blank');
+                    // console.warn("This is a warning!");       
                     e.preventDefault();
 
                 }

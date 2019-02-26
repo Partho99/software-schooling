@@ -41,6 +41,8 @@
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     </head>
     <body>
+
+        
         <script src="js/login.js"></script>
         <header class="header">
             <!-- Main Navbar-->
@@ -81,8 +83,6 @@
                                     <a class="dropdown-item" href="#">Unix Operating System</a>
                                 </div>
                             </li>  
-                            <li class="nav-item" ><a href="post.jsp" class="nav-link fa fa-clipboard" id="linkcolor"> Post</a>
-                            </li>
                             <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
@@ -90,7 +90,7 @@
                             <%
                                 if (session.getAttribute("loginusername") == null) {
                             %>
-                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
+                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Log in</a>
                             </li>   
                             <%
                             } else {
@@ -131,34 +131,34 @@
         <div class="container">
             <div class="row">
                 <!-- Latest Posts -->
-               
+
                 <main class="posts-listing col-lg-8"> 
-                    
- 
+
+
                     <div class="container">
-        
-                        
-                 
+
+
+
                         <div class="row">
-                   
-                   
+
+
                             <!-- post -->
 
-                                                                     <%
-                    ArrayList<Contents> listItem = (ArrayList<Contents>) request.getAttribute("BlogContents");
-                    for (int i = 0; i < listItem.size(); i++) {
-                %>
+                            <%
+                                ArrayList<Contents> listItem = (ArrayList<Contents>) request.getAttribute("BlogContents");
+                                for (int i = 0; i < listItem.size(); i++) {
+                            %>
 
                             <div class="post col-xl-6" id="imghov">
-                        
-                                <div class="post-thumbnail"><a href="post.html"><img src="img/blog-post-4.jpeg" alt="..." class="img-fluid"></a></div>
+                                <% session.setAttribute("contentid", listItem.get(i).getContentId());%>
+                                <div class="post-thumbnail"><a href="/software-schooling/PostController?contentId=<%=listItem.get(i).getContentId() %>"><img src="img/blog-post-4.jpeg" alt="..." class="img-fluid"></a></div>
                                 <div class="post-details" >
                                     <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last">20 May | 2016</div>
+                                        <div class="date meta-last"><%=listItem.get(i).getCreationDtm() %></div>
                                         <div class="category"><a href="#">Sceince & Technology</a></div>
-                                    </div><a href="post.html">
+                                    </div><a href="/software-schooling/PostController?contentId=<%=listItem.get(i).getContentId() %>">
                                         <h3 class="h4" id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
-                                        <p class="text-muted"><%=listItem.get(i).getContentText().substring(0,15) %></p>
+                                    <p class="text-muted">Click to more details</p>
                                     <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>John Doe</span></div></a>
@@ -166,25 +166,25 @@
                                         <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                                     </div>
                                 </div>
-                                 
+
                             </div>
 
-                                    <% }%> 
-                                  
+                            <% } %> 
+
 
                         </div>
-                                    
-                        
+
+
                         <!-- Pagination -->
-                      <!--   <nav aria-label="Page navigation example">
-                            <ul class="pagination pagination-template d-flex justify-content-center">
-                                <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
-                                <li class="page-item"><a href="#" class="page-link active">1</a></li>
-                                <li class="page-item"><a href="" class="page-link">2</a></li>
-                                <li class="page-item"><a href="#" class="page-link">3</a></li>
-                                <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
-                            </ul>
-                        </nav> -->
+                        <!--   <nav aria-label="Page navigation example">
+                              <ul class="pagination pagination-template d-flex justify-content-center">
+                                  <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-left"></i></a></li>
+                                  <li class="page-item"><a href="#" class="page-link active">1</a></li>
+                                  <li class="page-item"><a href="" class="page-link">2</a></li>
+                                  <li class="page-item"><a href="#" class="page-link">3</a></li>
+                                  <li class="page-item"><a href="#" class="page-link"> <i class="fa fa-angle-right"></i></a></li>
+                              </ul>
+                          </nav> -->
                     </div>
                 </main>
                 <aside class="col-lg-4">
@@ -201,7 +201,7 @@
                         </form>
                     </div>
                     <!-- Widget [Latest Posts Widget]        -->
-                    
+
                     <div class="widget latest-posts">
                         <header>
                             <h3 class="h6">Latest Posts</h3>
@@ -210,12 +210,11 @@
 
                             ArrayList<Contents> latestpost = (ArrayList<Contents>) request.getAttribute("latestpost");
 
-                            for(Contents contents: latestpost){
-
+                            for (Contents contents : latestpost) {
 
                         %>
-                        
-                        <div class="blog-posts"><a href="#">
+
+                        <div class="blog-posts"><a href="/software-schooling/PostController?contentId=<%=contents.getContentId() %>">
                                 <div class="item d-flex align-items-center" id="imghov">
                                     <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
                                     <div class="title"><strong id="txt"><%out.print(contents.getContentTitle()); %></strong>
@@ -233,11 +232,11 @@
                         <header>
                             <h3 class="h6">Categories</h3>
                         </header>
-                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Growth</a><span>12</span></div>
-                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Local</a><span>25</span></div>
-                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Sales</a><span>8</span></div>
-                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Tips</a><span>17</span></div>
-                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Local</a><span>25</span></div>
+                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Java</a><span>12</span></div>
+                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Operating System</a><span>25</span></div>
+                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Html & Css</a><span>8</span></div>
+                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Servlet</a><span>17</span></div>
+                        <div class="item d-flex justify-content-between" id="categorieslinkcolor"><a id="cattext" href="#">Database</a><span>25</span></div>
                     </div>
                     <!-- Widget [Tags Cloud Widget]-->
                     <div class="widget tags">  

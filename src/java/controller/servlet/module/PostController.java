@@ -5,12 +5,19 @@
  */
 package controller.servlet.module;
 
+import connection.jdbc.module.CommentsDB;
 import connection.jdbc.module.ContentsDB;
 import java.io.IOException;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import pojo.java.module.Comment;
 import pojo.java.module.Contents;
 
 /**
@@ -30,34 +37,41 @@ public class PostController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        //ArrayList<Contents> contents = new ArrayList<>();
+        ArrayList<Contents> postItem = new ArrayList<>();
+        ArrayList<Contents> latestItem = new ArrayList<>();
+        ArrayList<Comment> comments = new ArrayList<>();
+        
+        
+        ContentsDB cDB = new ContentsDB();
+        CommentsDB commentsDB = new CommentsDB();
+        
+        
+        int contentId = Integer.parseInt(request.getParameter("contentId"));
+
+        try {
+            postItem = cDB.getPostDetails(contentId);
+            latestItem = cDB.latestPost();
+            comments = commentsDB.getCommentDetails(contentId);
+
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(BlogController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+//        for (Contents content : contents) {
+//            System.out.println(content.getContentTitle());
+//        }
+        request.setAttribute("postitem", postItem);
+        request.setAttribute("latestitem", latestItem);
+        request.setAttribute("comments", comments);
+        request.getRequestDispatcher("post.jsp").forward(request, response);
+        // response.sendRedirect("blog.jsp");
 
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        java.util.Date dt = new java.util.Date();
-        java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-        String currentTime = sdf.format(dt);
-        String updateTime = sdf.format(dt);
-
-        Contents contents = new Contents();
-        ContentsDB saveContents = new ContentsDB();
-
-        String postTitle = request.getParameter("title");
-
-        String postText = request.getParameter("description");
-
-        contents.setContentTitle(postTitle);
-        contents.setContentText(postText);
-        contents.setCreationDtm(dt);
-        contents.setUpdateDtm(dt);
-
-        System.out.println(postText);
-        if(saveContents.saveContents(contents) == true){
-               
-            }
 
     }
 

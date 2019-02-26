@@ -19,16 +19,20 @@ public class Comment {
     private Date creationDtm;
     private Date updateDtm;
     private int userId;
-    private int postId;
+    private int contentId;
 
-    public Comment(int commentId, String commentText, int isActive, Date creationDtm, Date updateDtm, int userId, int postId) {
+    public Comment() {
+
+    }
+
+    public Comment(int commentId, String commentText, int isActive, Date creationDtm, Date updateDtm, int userId, int contentId) {
         this.commentId = commentId;
         this.commentText = commentText;
         this.isActive = isActive;
         this.creationDtm = creationDtm;
         this.updateDtm = updateDtm;
         this.userId = userId;
-        this.postId = postId;
+        this.contentId = contentId;
     }
 
     public int getCommentId() {
@@ -79,12 +83,14 @@ public class Comment {
         this.userId = userId;
     }
 
-    public int getPostId() {
-        return postId;
+    public int getContentId() {
+        return contentId;
     }
 
-    public void setPostId(int postId) {
-        this.postId = postId;
+    public void setContentId(int contentId) {
+        this.contentId = contentId;
     }
+
+   
 
 }

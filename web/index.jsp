@@ -1,10 +1,8 @@
-
-
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
     <head>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Software-Schooling</title>
@@ -26,9 +24,10 @@
         <!-- Custom stylesheet - for your changes-->
         <link rel="stylesheet" href="css/custom.css">
         <link rel="shortcut icon" href="favicon.png">
-
+        
     </head>
     <body>
+ 
 
 
         <header class="header">
@@ -71,8 +70,6 @@
                                     <a class="dropdown-item" href="#">Unix Operating System</a>
                                 </div>
                             </li>  
-                            <li class="nav-item" ><a href="post.jsp" class="nav-link fa fa-clipboard" id="linkcolor"> Post</a>
-                            </li>
                             <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
@@ -81,7 +78,7 @@
                             <%
                                 if (session.getAttribute("loginusername") == null) {
                             %>
-                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Sign in</a>
+                            <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Log in</a>
                             </li>   
                             <%
                             } else {
@@ -120,11 +117,11 @@
             </nav>
         </header>
         <!-- Hero Section-->
-        <section style="background: url(img/hero.jpg); background-size: cover; background-position: center center" class="hero">
+        <section style="background: url(img/hero-bg1.jpg); background-size: cover; background-position: center center" class="hero">
             <div class="container">
                 <div class="row">
                     <div class="col-lg-7">
-                        <h1>Bootstrap 4 Blog - A free template by Bootstrap Temple</h1><a href="#" class="hero-link">Discover More</a>
+                        <h1>This web site is developed for teaching about only Computer Science Technology</h1><a href="#" class="hero-link">Discover More</a>
                     </div>
                 </div><a href=".intro" class="continue link-scroll"><i class="fa fa-long-arrow-down"></i> Scroll Down</a>
             </div>

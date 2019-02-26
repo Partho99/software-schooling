@@ -49,7 +49,7 @@ public class ContentsDB extends JdbcDao {
         ArrayList<Contents> latestPostList = new ArrayList<>();
 
         openConnection();
-        String sql = "SELECT * FROM contents ORDER BY creation_dtm DESC limit 5;";
+        String sql = "SELECT * FROM contents ORDER BY creation_dtm DESC limit 3;";
 
         ps = connection.prepareStatement(sql);
         resultSet = ps.executeQuery();
@@ -73,25 +73,51 @@ public class ContentsDB extends JdbcDao {
     public boolean saveContents(Contents contents) {
 
         boolean success = false;
+        
         try {
             openConnection();
 
-            String sql = "insert into contents(content_title,content_text,creation_dtm,update_dtm) values(?,?,?,?)";
+            String sql = "insert into contents(content_title,content_text,creation_dtm,update_dtm,user_id) values(?,?,?,?,?)";
             ps = connection.prepareStatement(sql);
 
             ps.setString(1, contents.getContentTitle());
             ps.setString(2, contents.getContentText());
             ps.setString(3, sdf.format(contents.getCreationDtm()));
             ps.setString(4, sdf.format(contents.getUpdateDtm()));
-            
+            ps.setInt(5, contents.getUserId());
+
             ps.executeUpdate();
-            
+
             return true;
-            
+
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ContentsDB.class.getName()).log(Level.SEVERE, null, ex);
         }
 
         return false;
+    }
+
+    public ArrayList<Contents> getPostDetails(int contentsId) throws SQLException, ClassNotFoundException {
+        ArrayList<Contents> latestPostList = new ArrayList<>();
+
+        openConnection();
+        String sql = "SELECT * FROM contents where content_id ='" + contentsId + "'";
+
+        ps = connection.prepareStatement(sql);
+        resultSet = ps.executeQuery();
+
+        while (resultSet.next()) {
+            Contents content = new Contents();
+            content.setContentId(resultSet.getInt("content_id"));
+            content.setContentText(resultSet.getString("content_text"));
+            content.setContentTitle(resultSet.getString("content_title"));
+            content.setCreationDtm(resultSet.getTimestamp("creation_dtm"));
+            content.setUpdateDtm(resultSet.getTimestamp("update_dtm"));
+            content.setImagePath(resultSet.getString("image_path"));
+            content.setIsActive(resultSet.getInt("is_active"));
+
+            latestPostList.add(content);
+        }
+        return latestPostList;
     }
 }

@@ -24,6 +24,10 @@
         <servlet-name>PostController</servlet-name>
         <servlet-class>controller.servlet.module.PostController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CommentsController</servlet-name>
+        <servlet-class>controller.servlet.module.CommentsController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationController</servlet-name>
         <url-pattern>/RegistrationController</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>PostController</servlet-name>
         <url-pattern>/PostController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CommentsController</servlet-name>
+        <url-pattern>/CommentsController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

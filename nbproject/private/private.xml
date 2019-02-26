@@ -5,7 +5,7 @@
             <url>web/blog.jsp</url>
             <bookmark id="1">
                 <name/>
-                <line>288</line>
+                <line>287</line>
                 <key/>
             </bookmark>
         </file>
@@ -13,30 +13,25 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/FileUploadController.java</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/BlogController.java</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/connection/jdbc/module/CommentsDB.java</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/connection/jdbc/module/ContentsDB.java</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/web/post.jsp</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/js/personal_info.js</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/web/personal_info.jsp</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/LoginController.java</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/web/login_register.jsp</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/logout.jsp</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/pojo/java/module/Comment.java</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/connection/jdbc/module/JdbcDao.java</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/web/createpost.jsp</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/pojo/java/module/Contents.java</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/CommentsController.java</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/PostController.java</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/web/css/style.personalinfo.css</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/js/personalinfo.js</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/index.jsp</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/UserProfileController.java</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/license.txt</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/connection/jdbc/module/RegistrationLoginDB.java</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/WEB-INF/web.xml</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/BlogController.java</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/codemirror/js/default.js</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/codeeditor.jsp</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/connection/jdbc/module/ContentsDB.java</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/css/style.default.css</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/web/personal_info.jsp</file>
-            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/connection/jdbc/module/JdbcDao.java</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/RegistrationController.java</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/controller/servlet/module/UserProfileController.java</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/src/java/connection/jdbc/module/RegistrationLoginDB.java</file>
             <file>file:/home/partho/NetBeansProjects/software-schooling/web/blog.jsp</file>
+            <file>file:/home/partho/NetBeansProjects/software-schooling/web/WEB-INF/web.xml</file>
         </group>
     </open-files>
 </project-private>
