@@ -49,14 +49,33 @@ public class LoginController extends HttpServlet {
                 HttpSession session = request.getSession();
                 session.setAttribute("loginusername", userLogin.getUserName());
                 session.setAttribute("loginuserid", userLogin.getUserId());
-                response.sendRedirect("index.jsp");
+                int postId = 0;
+                try {
+                    postId = (int) session.getAttribute("contentId");
+
+                    if (postId == 0) {
+
+                        //request.getRequestDispatcher("index.jsp").forward(request, response);
+                        response.sendRedirect("index.jsp");
+                    } else {
+                        response.sendRedirect("/software-schooling/PostController?contentId=" + postId);
+                    }
+                } catch (NullPointerException e) {
+                    if (postId == 0) {
+
+                        //request.getRequestDispatcher("index.jsp").forward(request, response);
+                        response.sendRedirect("index.jsp");
+                    } else {
+                        response.sendRedirect("/software-schooling/PostController?contentId=" + postId);
+                    }
+                }
+
             } else {
                 request.setAttribute("errorMessage", "Invalid username?password");
                 request.getRequestDispatcher("/login_register.jsp").forward(request, response);
             }
 
-        }
-        else{
+        } else {
             request.getRequestDispatcher("/login_register.jsp").forward(request, response);
         }
 

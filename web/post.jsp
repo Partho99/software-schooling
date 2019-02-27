@@ -150,6 +150,11 @@
                                         <div class="views"><i class="icon-eye" id="iconcolor"></i> 900</div>
                                         <div class="comments meta-last"><i class="icon-comment"></i>12</div>
 
+                                        <% 
+                                        HttpSession session1 = request.getSession();
+                                        session1.setAttribute("contentId", postItem.get(i).getContentId());
+                                        
+                                        %>
                                     </div>
                                 </div>
 
@@ -199,7 +204,7 @@
 
                                 <%
 
-                                    HttpSession session1 = request.getSession();
+//                                    HttpSession session1 = request.getSession();
                                     String username =(String) session1.getAttribute("loginusername");
                                     if (username != null) {
                                 %>

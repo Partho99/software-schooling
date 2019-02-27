@@ -22,7 +22,7 @@
                 <h1>Enter Post Title </h1><br/>
                 <input type="text" name="title" id="firstname" style="width:50%" required>
                 <h1>Enter Post details</h1><br/>
-                <textarea id="editor" name="description"></textarea> <input type="file" name="file" style="width:200px" accept="image/*">
+                <textarea id="editor" name="description"></textarea> <input type="file" name="file" >
                 <input type="submit" value="Submit a Post">
             </div>
 

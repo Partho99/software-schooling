@@ -7,6 +7,6 @@ CKEDITOR.editorConfig = function( config ) {
 	config.language = 'en';
 	config.uiColor = '#1dc103';
 	config.height = 300;
-        config.width = 1500;
+        config.width = '70%';
 	config.toolbarCanCollapse = true;
 };
