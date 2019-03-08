@@ -1,3 +1,5 @@
+<%@page import="pojo.java.module.Contents"%>
+<%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
@@ -218,43 +220,32 @@
         <section class="latest-posts"> 
             <div class="container">
                 <header> 
-                    <h2>Latest from the blog</h2>
+                    <h2>Popular from the blog</h2>
                     <p class="text-big">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                 </header>
                 <div class="row">
-                    <div class="post col-md-4">
-                        <div class="post-thumbnail"><a href="post.jsp"><img src="img/blog-1.jpg" alt="..." class="img-fluid"></a></div>
-                        <div class="post-details">
-                            <div class="post-meta d-flex justify-content-between">
-                                <div class="date">20 May | 2016</div>
-                                <div class="category" ><a href="#" id="linkcolor">Business</a></div>
-                            </div><a href="post.jsp">
-                                <h3 class="h4" id="textcolor">Ways to remember your important ideas</h3></a>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                        </div>
-                    </div>
-                    <div class="post col-md-4">
-                        <div class="post-thumbnail"><a href="post.jsp"><img src="img/blog-2.jpg" alt="..." class="img-fluid"></a></div>
-                        <div class="post-details">
-                            <div class="post-meta d-flex justify-content-between">
-                                <div class="date">20 May | 2016</div>
-                                <div class="category"><a href="#" id="linkcolor">Technology</a></div>
-                            </div><a href="post.jsp">
-                                <h3 class="h4" id="textcolor">Diversity in Engineering: Effect on Questions</h3></a>
-                            <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                        </div>
-                    </div>
-                    <div class="post col-md-4">
+                    
+                   <%
+                   
+//                   ArrayList<Contents> popularItem = (ArrayList<Contents>) request.getAttribute("popularItems");
+//                                for (int i = 0; i < popularItem.size(); i++) {
+                   
+                   
+                   %>
+                    
+                    <div class="post col-md-3">
                         <div class="post-thumbnail"><a href="post.jsp"><img src="img/blog-3.jpg" alt="..." class="img-fluid"></a></div>
                         <div class="post-details">
                             <div class="post-meta d-flex justify-content-between">
                                 <div class="date">20 May | 2016</div>
                                 <div class="category"><a href="#" id="linkcolor">Financial</a></div>
                             </div><a href="post.jsp">
-                                <h3 class="h4" id="textcolor">Alberto Savoia Can Teach You About Interior</h3></a>
+                                <h3 class="h4" id="textcolor">fhfghfdh</h3></a>
                             <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
                         </div>
                     </div>
+                            
+                            <% //} %>
                 </div>
             </div>
         </section>

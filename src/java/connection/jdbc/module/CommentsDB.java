@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pojo.java.module.Comment;
-import pojo.java.module.Contents;
 
 /**
  *
@@ -28,7 +27,7 @@ public class CommentsDB extends JdbcDao {
         try {
             openConnection();
 
-            String sql = "insert into comment(comment_text,creation_dtm,update_dtm,user_id,post_id) values(?,?,?,?,?)";
+            String sql = "insert into comment(comment_text,creation_dtm,update_dtm,user_id,content_id) values(?,?,?,?,?)";
 
             ps = connection.prepareStatement(sql);
 
@@ -53,7 +52,7 @@ public class CommentsDB extends JdbcDao {
         ArrayList<Comment> comments = new ArrayList<>();
 
         openConnection();
-        String sql = "SELECT * FROM comment where post_id ='" + contentsId + "'";
+        String sql = "SELECT * FROM comment where content_id ='" + contentsId + "'";
 
         ps = connection.prepareStatement(sql);
         resultSet = ps.executeQuery();
@@ -61,7 +60,7 @@ public class CommentsDB extends JdbcDao {
         while (resultSet.next()) {
             Comment comment = new Comment();
             comment.setCommentText(resultSet.getString("comment_text"));
-            comment.setContentId(resultSet.getInt("post_id"));
+            comment.setContentId(resultSet.getInt("content_id"));
             comment.setUserId(resultSet.getInt("user_id"));
 
             comments.add(comment);

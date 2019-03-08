@@ -25,14 +25,16 @@ public class Contents {
     public Contents() {
     }
 
-    public Contents(int contentId, String contentTitle, String contentText, int isActive, Date creationDtm, Date updateDtm, int userId) {
+    public Contents(int contentId, String contentTitle, String contentText, int isActive, Date creationDtm, Date updateDtm, String imagePath, int userId) {
         this.contentId = contentId;
         this.contentTitle = contentTitle;
         this.contentText = contentText;
         this.isActive = isActive;
         this.creationDtm = creationDtm;
         this.updateDtm = updateDtm;
+        this.imagePath = imagePath;
         this.userId = userId;
+
     }
 
     public int getContentId() {
@@ -98,6 +100,5 @@ public class Contents {
     public void setUserId(int userId) {
         this.userId = userId;
     }
-    
 
 }

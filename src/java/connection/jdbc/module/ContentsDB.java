@@ -38,6 +38,7 @@ public class ContentsDB extends JdbcDao {
             content.setUpdateDtm(resultSet.getTimestamp("update_dtm"));
             content.setImagePath(resultSet.getString("image_path"));
             content.setIsActive(resultSet.getInt("is_active"));
+            // content.setViewsCounter(resultSet.getInt("views"));
 
             contentList.add(content);
 
@@ -64,6 +65,7 @@ public class ContentsDB extends JdbcDao {
             content.setUpdateDtm(resultSet.getTimestamp("update_dtm"));
             content.setImagePath(resultSet.getString("image_path"));
             content.setIsActive(resultSet.getInt("is_active"));
+            // content.setViewsCounter(resultSet.getInt("views"));
 
             latestPostList.add(content);
         }
@@ -72,8 +74,8 @@ public class ContentsDB extends JdbcDao {
 
     public boolean saveContents(Contents contents) {
 
-        boolean success = false;
-        
+        int lastContentId = 0;
+
         try {
             openConnection();
 
@@ -87,7 +89,25 @@ public class ContentsDB extends JdbcDao {
             ps.setInt(5, contents.getUserId());
 
             ps.executeUpdate();
-
+            
+            //dump......
+//
+//            String sql2 = "select max(content_id) from contents";
+//
+//            ps = connection.prepareStatement(sql2);
+//            resultSet = ps.executeQuery();
+//
+//            
+//            if (resultSet.next()) {
+//                resultSet.getInt("content_id");
+//            }
+//
+//            String sql3 = "insert into postviews(content_id) values(?)";
+//            ps = connection.prepareStatement(sql3);
+//
+//            ps.setInt(1, lastContentId);
+//            ps.executeUpdate();
+            
             return true;
 
         } catch (SQLException | ClassNotFoundException ex) {
@@ -120,4 +140,22 @@ public class ContentsDB extends JdbcDao {
         }
         return latestPostList;
     }
+
+//    public boolean saveInPostViews(PostViews saveInPostViews) {
+//        try {
+//            openConnection();
+//
+//            String sql = "insert into postviews(content_id) values(?)";
+//            ps = connection.prepareStatement(sql);
+//
+//            ps.setInt(1, saveInPostViews.getContent_id());
+//            ps.executeUpdate();
+//
+//            return true;
+//        } catch (SQLException | ClassNotFoundException ex) {
+//            Logger.getLogger(ContentsDB.class.getName()).log(Level.SEVERE, null, ex);
+//        }
+//        return false;
+//    }
+
 }

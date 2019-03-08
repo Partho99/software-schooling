@@ -61,6 +61,7 @@ public class LoginController extends HttpServlet {
                         response.sendRedirect("/software-schooling/PostController?contentId=" + postId);
                     }
                 } catch (NullPointerException e) {
+
                     if (postId == 0) {
 
                         //request.getRequestDispatcher("index.jsp").forward(request, response);

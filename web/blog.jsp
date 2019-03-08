@@ -4,8 +4,6 @@
 <%@page import="pojo.java.module.Contents"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="connection.jdbc.module.JdbcDao"%>
-
-
 <!DOCTYPE html>
 <html>
     <head>
@@ -42,7 +40,7 @@
     </head>
     <body>
 
-        
+
         <script src="js/login.js"></script>
         <header class="header">
             <!-- Main Navbar-->
@@ -151,18 +149,23 @@
 
                             <div class="post col-xl-6" id="imghov">
                                 <% session.setAttribute("contentid", listItem.get(i).getContentId());%>
-                                <div class="post-thumbnail"><a href="/software-schooling/PostController?contentId=<%=listItem.get(i).getContentId() %>"><img src="img/blog-post-4.jpeg" alt="..." class="img-fluid"></a></div>
+                                <div class="post-thumbnail"><a href="/software-schooling/PostController?contentId=<%=listItem.get(i).getContentId()%>"><img src="img/blog-post-4.jpeg" alt="..." class="img-fluid"></a></div>
                                 <div class="post-details" >
                                     <div class="post-meta d-flex justify-content-between">
-                                        <div class="date meta-last"><%=listItem.get(i).getCreationDtm() %></div>
+                                        <div class="date meta-last"><%=listItem.get(i).getCreationDtm()%></div>
                                         <div class="category"><a href="#">Sceince & Technology</a></div>
-                                    </div><a href="/software-schooling/PostController?contentId=<%=listItem.get(i).getContentId() %>">
+                                    </div><a href="/software-schooling/PostController?contentId=<%=listItem.get(i).getContentId()%>"
+                                      href="/software-schooling/ViewsController?contentId=<%=listItem.get(i).getContentId()%>"
+                                      
+                                      
+                                      >
                                         <h3 class="h4" id="txt"><%=listItem.get(i).getContentTitle()%></h3></a>
                                     <p class="text-muted">Click to more details</p>
                                     <div class="post-footer d-flex align-items-center"><a href="#" class="author d-flex align-items-center flex-wrap">
                                             <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
                                             <div class="title"><span>John Doe</span></div></a>
                                         <div class="date"><i class="icon-clock"></i> 2 months ago</div>
+                                        <div class="views"><i class="icon-eye" id="iconcolor"></i></div>
                                         <div class="comments meta-last"><i class="icon-comment"></i>12</div>
                                     </div>
                                 </div>
@@ -214,12 +217,12 @@
 
                         %>
 
-                        <div class="blog-posts"><a href="/software-schooling/PostController?contentId=<%=contents.getContentId() %>">
+                        <div class="blog-posts"><a href="/software-schooling/PostController?contentId=<%=contents.getContentId()%>">
                                 <div class="item d-flex align-items-center" id="imghov">
                                     <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
                                     <div class="title"><strong id="txt"><%out.print(contents.getContentTitle()); %></strong>
                                         <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
+                                            <div class="views"><i class="icon-eye"></i></div>
                                             <div class="comments"><i class="icon-comment"></i>12</div>
                                         </div>
                                     </div>

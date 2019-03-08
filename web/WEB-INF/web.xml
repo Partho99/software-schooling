@@ -28,6 +28,14 @@
         <servlet-name>CommentsController</servlet-name>
         <servlet-class>controller.servlet.module.CommentsController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>HomeController</servlet-name>
+        <servlet-class>controller.servlet.module.HomeController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>VotingController</servlet-name>
+        <servlet-class>controller.servlet.module.VotingController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationController</servlet-name>
         <url-pattern>/RegistrationController</url-pattern>
@@ -55,6 +63,14 @@
     <servlet-mapping>
         <servlet-name>CommentsController</servlet-name>
         <url-pattern>/CommentsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>HomeController</servlet-name>
+        <url-pattern>/HomeController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>VotingController</servlet-name>
+        <url-pattern>/VotingController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

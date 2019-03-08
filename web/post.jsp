@@ -29,7 +29,7 @@
         <!-- Favicon-->
         <link rel="shortcut icon" href="favicon.png">
 
-        
+
     </head>
     <body>
 
@@ -75,7 +75,7 @@
                                     <a class="dropdown-item" href="#">Unix Operating System</a>
                                 </div>
                             </li>  
-                            <li class="nav-item" ><a href="post.jsp" class="nav-link active fa fa-clipboard" id="linkcolor"> Post</a>
+                            <li class="nav-item" ><a href="#" class="nav-link active fa fa-clipboard" id="linkcolor"> Post</a>
                             </li>
                             <li class="nav-item" ><a href="#" class="nav-link fa fa-phone " id="linkcolor"> Contact</a>
 
@@ -141,31 +141,61 @@
                                 <div class="post-meta d-flex justify-content-between">
                                     <div class="category"><a href="#">Business</a><a href="#">Financial</a></div>
                                 </div>
-                                <h1><%  %><a href="#"><i class="fa fa-bookmark-o"></i></a></h1>
+
+
                                 <div class="post-footer d-flex align-items-center flex-column flex-sm-row"><a href="#" class="author d-flex align-items-center flex-wrap">
                                         <div class="avatar"><img src="img/avatar-1.jpg" alt="..." class="img-fluid"></div>
+
                                         <div class="title"><span>John Doe</span></div></a>
                                     <div class="d-flex align-items-center flex-wrap">       
                                         <div class="date"><i class="icon-clock"></i><%=postItem.get(i).getCreationDtm()%></div>
-                                        <div class="views"><i class="icon-eye" id="iconcolor"></i> 900</div>
-                                        <div class="comments meta-last"><i class="icon-comment"></i>12</div>
+                                        <div class="views"><i class="icon-eye" id="iconcolor"></i></div>
+                                        <div class="comments meta-last"><i class="icon-comment"></i>12555</div>
 
-                                        <% 
-                                        HttpSession session1 = request.getSession();
-                                        session1.setAttribute("contentId", postItem.get(i).getContentId());
-                                        
+
+
+                                        <%
+                                            HttpSession session1 = request.getSession();
+                                            session1.setAttribute("contentId", postItem.get(i).getContentId());
+
                                         %>
                                     </div>
+                                    <form class="form" id="login-form" action="VotingController" method="post" role="form" style="display: block;">
+                                        <div class="like-content">
+                                            <input  name="contentid" value="<%=postItem.get(i).getContentId()%>" hidden="" /> 
+                                            <input  name="upvote" value="<%="upvote"%>"  hidden=""/>
+                                            <button class="btn-secondary like-review" type="submit">
+
+                                                <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+
+                                            </button>
+
+                                        </div>
+                                    </form>
+                                    <form class="form" id="login-form" action="VotingController" method="post" role="form" style="display: block;">
+                                        <div class="like-content">
+                                            <input  name="contentid" value="<%=postItem.get(i).getContentId()%>" hidden="" /> 
+                                            <input  name="downvote" value="<%="downvote"%>"  hidden=""/>
+                                            <button class="btn-secondary like-review" type="submit">
+                                                <i class="fa fa-thumbs-down" aria-hidden="true" ></i>
+                                            </button>
+
+                                        </div>
+                                    </form>
                                 </div>
 
+
+
                                 <div class="post-body">
+
 
 
                                     <p class="lead"></p>
                                     <p><%%></p>
                                     <p> <img src="img/featured-pic-3.jpeg" alt="..." class="img-fluid"></p>
-                                    <h3><%=postItem.get(i).getContentTitle()%></h3>
-                                    <p><%=postItem.get(i).getContentText()%></p>
+
+                                    <h2><%=postItem.get(i).getContentTitle()%></h2>
+                                    <%=postItem.get(i).getContentText()%>
 
                                 </div>
 
@@ -205,7 +235,7 @@
                                 <%
 
 //                                    HttpSession session1 = request.getSession();
-                                    String username =(String) session1.getAttribute("loginusername");
+                                    String username = (String) session1.getAttribute("loginusername");
                                     if (username != null) {
                                 %>
                                 <div class="add-comment">
@@ -262,7 +292,7 @@
                                     <div class="image"><img src="img/small-thumbnail-1.jpg" alt="..." class="img-fluid"></div>
                                     <div class="title"><strong ><%out.print(contents.getContentTitle()); %></strong>
                                         <div class="d-flex align-items-center">
-                                            <div class="views"><i class="icon-eye"></i> 500</div>
+                                            <div class="views"><i class="icon-eye"></i></div>
                                             <div class="comments"><i class="icon-comment"></i>12</div>
                                         </div>
                                     </div>
