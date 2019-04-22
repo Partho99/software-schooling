@@ -20,6 +20,7 @@ public class Comment {
     private Date updateDtm;
     private int userId;
     private int contentId;
+    private String userName;
 
     public Comment() {
 
@@ -89,6 +90,14 @@ public class Comment {
 
     public void setContentId(int contentId) {
         this.contentId = contentId;
+    }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
    

@@ -101,5 +101,12 @@ public class VotingDB extends JdbcDao {
         }
         return false;
     }
+    
+    public void voteCounter(int contentId) throws SQLException, ClassNotFoundException{
+        
+        openConnection();
+        
+        String sql = "select sum(upvote) from postvoting where content_id= "+contentId;
+    }
 
 }

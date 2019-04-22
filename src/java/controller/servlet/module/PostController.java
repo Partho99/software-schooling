@@ -8,6 +8,7 @@ package controller.servlet.module;
 import connection.jdbc.module.CommentsDB;
 import connection.jdbc.module.ContentsDB;
 import connection.jdbc.module.ViewsDB;
+import connection.jdbc.module.VotingDB;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import pojo.java.module.Comment;
 import pojo.java.module.Contents;
+import pojo.java.module.User;
 
 /**
  *
@@ -52,12 +54,12 @@ public class PostController extends HttpServlet {
 
         session.setAttribute("contentIdViews", contentId);
 
-        
         ViewsDB views = new ViewsDB();
-        
-        if(views.viewsCounter(contentId) == true)
-        {
-            
+
+        VotingDB allVotes = new VotingDB();
+
+        if (views.viewsCounter(contentId) == true) {
+
         }
 
         try {
@@ -65,24 +67,24 @@ public class PostController extends HttpServlet {
             postItem = cDB.getPostDetails(contentId);
             latestItem = cDB.latestPost();
             comments = commentsDB.getCommentDetails(contentId);
+            
+            ArrayList<User> userdetails = new ArrayList<>();
+            
+            
 
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(BlogController.class.getName()).log(Level.SEVERE, null, ex);
         }
 
-//        for (Contents content : contents) {
-//            System.out.println(content.getContentTitle());
-//        }
         request.setAttribute("postitem", postItem);
         request.setAttribute("latestitem", latestItem);
         request.setAttribute("comments", comments);
         request.getRequestDispatcher("post.jsp").forward(request, response);
         // response.sendRedirect("blog.jsp");
-        
 
     }
 
-    @Override
+        @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 

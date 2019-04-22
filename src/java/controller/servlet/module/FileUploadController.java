@@ -39,13 +39,13 @@ public class FileUploadController extends HttpServlet {
 
         ProfileImage userImage = new ProfileImage();
 
-        
         final Part filePart = request.getPart("file");
         //System.out.println(filePart.getSize());
 
         if (filePart.getSize() != 0) {
             HttpSession session = request.getSession();
             int uId = (Integer) session.getAttribute("loginuserid");
+            
             final String path = "/home/partho/NetBeansProjects/software-schooling/web/img/profile_picture/";
 
             String pathDb = "img/profile_picture/";
@@ -90,13 +90,16 @@ public class FileUploadController extends HttpServlet {
             if (rlDB.setUserProfileImage(userImage) == true) {
 
                 session.setAttribute("loginuserid", uId);
-                response.sendRedirect("personal_info.jsp");
+                // response.sendRedirect("personal_info.jsp");
+                request.getRequestDispatcher("personal_info.jsp").forward(request, response);
             } else {
 
+                request.getRequestDispatcher("personal_info.jsp").forward(request, response);
             }
 
         } else {
-           response.sendRedirect("personal_info.jsp");
+            //response.sendRedirect("personal_info.jsp");
+            request.getRequestDispatcher("personal_info.jsp").forward(request, response);
         }
     }
 

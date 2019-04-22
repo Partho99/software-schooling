@@ -1,7 +1,8 @@
 <%@page import="pojo.java.module.Contents"%>
 <%@page import="java.util.ArrayList"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
+
+
 <html>
     <head>
         
@@ -24,13 +25,21 @@
         <!-- theme stylesheet-->
         <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
         <!-- Custom stylesheet - for your changes-->
-        <link rel="stylesheet" href="css/custom.css">
+
         <link rel="shortcut icon" href="favicon.png">
         
     </head>
     <body>
  
 
+         <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+
+
+        %> 
 
         <header class="header">
             <!-- Main Navbar-->

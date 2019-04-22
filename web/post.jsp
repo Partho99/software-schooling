@@ -1,3 +1,5 @@
+<%@page import="connection.jdbc.module.RegistrationLoginDB"%>
+<%@page import="pojo.java.module.User"%>
 <%@page import="pojo.java.module.Comment"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="pojo.java.module.Contents"%>
@@ -34,6 +36,13 @@
     <body>
 
 
+        <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+
+        %> 
 
         <header class="header">
             <!-- Main Navbar-->
@@ -81,8 +90,7 @@
 
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
                             </li>
-                            <%
-                                if (session.getAttribute("loginusername") == null) {
+                            <%                                if (session.getAttribute("loginusername") == null) {
                             %>
                             <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Log in</a>
                             </li>   
@@ -156,7 +164,8 @@
 
                                         <%
                                             HttpSession session1 = request.getSession();
-                                            session1.setAttribute("contentId", postItem.get(i).getContentId());
+                                            // session.setAttribute("contentId", postItem.get(i).getContentId());
+
 
                                         %>
                                     </div>
@@ -210,18 +219,25 @@
                                         </div>
                                         <div class="icon next"><i class="fa fa-angle-right">   </i></div></a></div>
                                 <div class="post-comments">
+                                    
+                                    <% ArrayList<Comment> commentslength = (ArrayList<Comment>) request.getAttribute("comments"); %> 
                                     <header>
-                                        <h3 class="h6">Post Comments<span class="no-of-comments">(3)</span></h3>
+                                        <h3 class="h6" style="color:#930505;">Post Comments<span class="no-of-comments" style="color:blue;">(<%=commentslength.size() %>)</span></h3>
                                     </header>
 
                                     <%  ArrayList<Comment> comments = (ArrayList<Comment>) request.getAttribute("comments");
                                         for (Comment comment : comments) {
+
+                                            User userDetails = new User();
+                                            RegistrationLoginDB rldb = new RegistrationLoginDB();
+                                            userDetails = rldb.showUserDetails(comment.getUserId());
+
                                     %>
                                     <div class="comment">
                                         <div class="comment-header d-flex justify-content-between">
                                             <div class="user d-flex align-items-center">
-                                                <div class="image"><img src="img/profile_picture/<%=session.getAttribute("loginusername")%>.jpg" alt="..." class="img-fluid rounded-circle"></div>
-                                                <div class="title"><strong>Jabi Hernandiz</strong><span class="date">May 2016</span></div>
+                                                <div class="image"><img src="img/profile_picture/<%=comment.getUserName()%>.jpg" alt="..." class="img-fluid rounded-circle"></div>
+                                                <div class="title"><strong><%=userDetails.getFirstName() + " " + userDetails.getLastName()%></strong><span class="date">May 2016</span></div>
                                             </div>
                                         </div>
                                         <div class="comment-body">

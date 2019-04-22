@@ -27,7 +27,12 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        
+        int postId = 0;
 
+        HttpSession session = request.getSession();
         RegistrationLoginDB rlDB = new RegistrationLoginDB();
         //for login
         String loginUserName = request.getParameter("loginusername");
@@ -46,30 +51,41 @@ public class LoginController extends HttpServlet {
             System.out.println(loginPassword.isEmpty());
             if ((loginUserName.equals(userLogin.getUserName())) && checkedPassword(loginPassword, userLogin.getPassword())) {
 
-                HttpSession session = request.getSession();
                 session.setAttribute("loginusername", userLogin.getUserName());
                 session.setAttribute("loginuserid", userLogin.getUserId());
-                int postId = 0;
+                
                 try {
-                    postId = (int) session.getAttribute("contentId");
+                    
+                    postId  = Integer.parseInt(request.getParameter("postid"));
 
+                    
+                    System.out.println(postId);
                     if (postId == 0) {
 
                         //request.getRequestDispatcher("index.jsp").forward(request, response);
                         response.sendRedirect("index.jsp");
                     } else {
+
+                       // request.getRequestDispatcher("/software-schooling/PostController?contentId=" + postId).forward(request, response);
                         response.sendRedirect("/software-schooling/PostController?contentId=" + postId);
                     }
-                } catch (NullPointerException e) {
+                } catch (NullPointerException | NumberFormatException  e) {
 
                     if (postId == 0) {
 
                         //request.getRequestDispatcher("index.jsp").forward(request, response);
                         response.sendRedirect("index.jsp");
                     } else {
+                        
+                      //  request.getRequestDispatcher("/software-schooling/PostController?contentId=" + postId).forward(request, response);
+                        
                         response.sendRedirect("/software-schooling/PostController?contentId=" + postId);
                     }
                 }
+                //request.getRequestDispatcher("index.jsp").forward(request, response);
+                //  request.getRequestDispatcher("/software-schooling/PostController?contentId=" + postId).forward(request, response);
+
+                
 
             } else {
                 request.setAttribute("errorMessage", "Invalid username?password");
@@ -79,6 +95,9 @@ public class LoginController extends HttpServlet {
         } else {
             request.getRequestDispatcher("/login_register.jsp").forward(request, response);
         }
+
+        
+        
 
     }
 

@@ -27,7 +27,6 @@
         <!-- theme stylesheet-->
         <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
         <!-- Custom stylesheet - for your changes-->
-        <link rel="stylesheet" href="css/custom.css">
         <!-- Favicon-->
         <link rel="shortcut icon" href="favicon.png">
 
@@ -38,8 +37,17 @@
             <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
             <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
     </head>
+    
     <body>
 
+         <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+
+
+        %> 
 
         <script src="js/login.js"></script>
         <header class="header">

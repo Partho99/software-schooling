@@ -57,9 +57,9 @@ public class CommentsController extends HttpServlet {
         HttpSession session = request.getSession();
 
         int contentId = Integer.parseInt(request.getParameter("contentId"));
-        System.out.println(contentId);
+
         int loginUserId = (int) session.getAttribute("loginuserid");
-        System.out.println(loginUserId);
+        String userName = (String) session.getAttribute("loginusername");
         String userComment = request.getParameter("usercomment");
 
         Comment comment = new Comment();
@@ -69,10 +69,11 @@ public class CommentsController extends HttpServlet {
         comment.setUserId(loginUserId);
         comment.setCreationDtm(dt);
         comment.setUpdateDtm(dt);
+        comment.setUserName(userName);
 
         CommentsDB commentsDB = new CommentsDB();
         if (commentsDB.setUserComment(comment) == true) {
-            response.sendRedirect("/software-schooling/PostController?contentId="+contentId);
+            response.sendRedirect("/software-schooling/PostController?contentId=" + contentId);
         }
 
     }

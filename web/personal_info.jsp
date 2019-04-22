@@ -7,6 +7,7 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -41,6 +42,14 @@
         <script src="js/personalinfo.js"></script>
     </head>
     <body>
+        <%
+            response.setHeader("Cache-Control", "no-cache");
+            response.setHeader("Cache-Control", "no-store");
+            response.setHeader("Pragma", "no-cache");
+            response.setDateHeader("Expires", 0);
+
+
+        %> 
 
         <header class="header">
             <!-- Main Navbar-->
@@ -87,8 +96,7 @@
                             <li class=" nav-item" ><a href="#" class="nav-link fa fa-send" id="linkcolor"> Q/A</a>
 
                             </li>
-                            <%
-                                if (session.getAttribute("loginusername") == null) {
+                            <%                                if (session.getAttribute("loginusername") == null) {
                             %>
                             <li class="nav-item" ><a href="login_register.jsp" class="nav-link fa fa-sign-in" id="linkcolor"> Log in</a>
                             </li>   
@@ -127,6 +135,8 @@
                 </div>
             </nav>
         </header>
+
+
         <div class="container">
             <div class="row my-2">
                 <div class="col-lg-8 order-lg-2">
@@ -256,30 +266,65 @@
                 <div class="col-lg-4 order-lg-1 text-center">
 
 
+                    <%
+                        if (session.getAttribute("loginusername") == null) {
+                    %>
+
                     <div class="profile-img">
 
 
+
                         <form id="register-form" action="FileUploadController" method="post" role="form" enctype="multipart/form-data">
-                            <img src="" class="avatar  img-thumbnail">
+                            <img src="img/profile_picture/<%=session.getAttribute("loginusername")%>.jpg" class="avatar  img-thumbnail">
                             <label class="custom-file">
-                                <input type="file" name="file" style="width:200px" accept="image/*"><br><br>
+                                <input type="file" name="file" style="width:200px" accept="image/*" id="imgInp"><br><br>
                                 <button class="btn btn-lg btn-info fa fa-pencil-square-o"> Save</button>
                             </label>
                         </form>
+                    </div>
 
+                    <% } else {%>
+
+                    <div class="profile-img">
                         <form id="register-form" action="FileUploadController" method="post" role="form" enctype="multipart/form-data">
                             <div class="imgbtn">
-                                <img src="img/profile_pictue/partho99.jpg" class="rounded">
+                                <img id="blah" src="img/profile_picture/<%=session.getAttribute("loginusername")%>.jpg" class="rounded">
                                 <label class="custom-file">
-                                    <input type="file" name="file" style="width:200px" accept="image/*">
+                                    <input type="file" name="file" style="width:200px" accept="image/*" id="imgInp">
                                 </label>
                                 <button class="btn fa fa-pencil-square-o"> Update</button>
                             </div>
                         </form >
 
                     </div>
+                    <% }%>
                 </div>
             </div>
         </div>
+
+        <script>
+
+            function readURL(input) {
+
+                if (input.files && input.files[0]) {
+                    var reader = new FileReader();
+
+                    reader.onload = function (e) {
+                        $('#blah').attr('src', e.target.result);
+                    };
+
+                    reader.readAsDataURL(input.files[0]);
+                }
+            }
+
+            $("#imgInp").change(function () {
+                readURL(this);
+            });
+
+
+        </script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+       
     </body>
 </html>

@@ -12,7 +12,7 @@ import pojo.java.module.User;
  * @author partho
  *
  */
-public class RegistrationLoginDB extends  JdbcDao{
+public class RegistrationLoginDB extends JdbcDao {
 
     java.util.Date dt = new java.util.Date();
     static java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -20,7 +20,7 @@ public class RegistrationLoginDB extends  JdbcDao{
     String updateTime = sdf.format(dt);
 
     // Registration for User........ 
-    public  boolean userRegistration(User userRegistration) {
+    public boolean userRegistration(User userRegistration) {
         try {
 
             openConnection();
@@ -47,7 +47,7 @@ public class RegistrationLoginDB extends  JdbcDao{
 
     }
 
-    public  boolean afterCompleteRegistration(User afterUserRegistration) {
+    public boolean afterCompleteRegistration(User afterUserRegistration) {
 
         try {
             String sql2 = "select * from user where user_name='" + afterUserRegistration.getUserName() + "'";
@@ -73,7 +73,7 @@ public class RegistrationLoginDB extends  JdbcDao{
     }
 
     // Login for User.......
-    public  boolean userLogin(User userLogin) {
+    public boolean userLogin(User userLogin) {
         try {
             openConnection();
 
@@ -102,7 +102,7 @@ public class RegistrationLoginDB extends  JdbcDao{
     }
 
     // Update profile information for user.......
-    public  boolean userProfileUpdation(User userUpdation) {
+    public boolean userProfileUpdation(User userUpdation) {
 
         String sql = "update user set first_name=? ,last_name=?,email=?,user_name=?,password=? where user_id='" + userUpdation.getUserId() + "'";
 
@@ -124,7 +124,7 @@ public class RegistrationLoginDB extends  JdbcDao{
         return false;
     }
 
-    public  boolean setUserProfileImage(ProfileImage userImage) {
+    public boolean setUserProfileImage(ProfileImage userImage) {
         try {
             openConnection();
 
@@ -143,7 +143,7 @@ public class RegistrationLoginDB extends  JdbcDao{
         return false;
     }
 
-    public  boolean showUserImage(ProfileImage profileImage) {
+    public boolean showUserImage(ProfileImage profileImage) {
 
         try {
             openConnection();
@@ -159,7 +159,7 @@ public class RegistrationLoginDB extends  JdbcDao{
         return false;
     }
 
-    public  boolean updateImage(ProfileImage profileimage) {
+    public boolean updateImage(ProfileImage profileimage) {
 
         try {
             openConnection();
@@ -175,6 +175,58 @@ public class RegistrationLoginDB extends  JdbcDao{
 
         return false;
 
+    }
+
+    public boolean userNameExistOrNot(String username) {
+
+        try {
+            openConnection();
+
+            String searchUserName = "select user_name from user";
+            ps = connection.prepareStatement(searchUserName);
+
+            resultSet = ps.executeQuery();
+            if( !resultSet.next()){
+               
+            }
+
+            return true;
+
+        } catch (SQLException | ClassNotFoundException ex) {
+           return false;
+        }
+    }
+    
+    public User showUserDetails(int userId) {
+
+        User userDetails = new User();
+        try {
+            openConnection();
+            String sql2 = "select * from user where user_id='" + userId + "'";
+            ps = connection.prepareStatement(sql2);
+           // JdbcDao.ps.setString(1, afterUserRegistration.getUserName());
+            resultSet = ps.executeQuery();
+
+            
+            if (resultSet.next()) {
+                
+                userDetails.setUserName(resultSet.getString("user_name"));
+                userDetails.setFirstName(resultSet.getString("first_name"));
+                userDetails.setLastName(resultSet.getString("last_name"));
+                userDetails.setEmail(resultSet.getString("email"));
+                userDetails.setUserId(resultSet.getInt("user_id"));
+                userDetails.setPassword(resultSet.getString("password"));
+                
+                return userDetails;
+            }
+
+            //  request.getRequestDispatcher("blog.jsp").forward(request, response);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(RegistrationController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return userDetails;
+       
     }
 
 }

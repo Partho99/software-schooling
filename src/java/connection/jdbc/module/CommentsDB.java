@@ -27,7 +27,7 @@ public class CommentsDB extends JdbcDao {
         try {
             openConnection();
 
-            String sql = "insert into comment(comment_text,creation_dtm,update_dtm,user_id,content_id) values(?,?,?,?,?)";
+            String sql = "insert into comment(comment_text,creation_dtm,update_dtm,user_id,content_id,user_name) values(?,?,?,?,?,?)";
 
             ps = connection.prepareStatement(sql);
 
@@ -36,6 +36,7 @@ public class CommentsDB extends JdbcDao {
             ps.setString(3, sdf.format(comment.getUpdateDtm()));
             ps.setInt(4, comment.getUserId());
             ps.setInt(5, comment.getContentId());
+            ps.setString(6, comment.getUserName());
 
             ps.executeUpdate();
 
@@ -53,6 +54,7 @@ public class CommentsDB extends JdbcDao {
 
         openConnection();
         String sql = "SELECT * FROM comment where content_id ='" + contentsId + "'";
+       
 
         ps = connection.prepareStatement(sql);
         resultSet = ps.executeQuery();
@@ -62,6 +64,7 @@ public class CommentsDB extends JdbcDao {
             comment.setCommentText(resultSet.getString("comment_text"));
             comment.setContentId(resultSet.getInt("content_id"));
             comment.setUserId(resultSet.getInt("user_id"));
+            comment.setUserName(resultSet.getString("user_name"));
 
             comments.add(comment);
         }

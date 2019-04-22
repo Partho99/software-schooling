@@ -30,8 +30,8 @@ public class RegistrationController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
-         RegistrationLoginDB rlDB = new RegistrationLoginDB();
+
+        RegistrationLoginDB rlDB = new RegistrationLoginDB();
 
         java.util.Date dt = new java.util.Date();
         java.text.SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -45,6 +45,13 @@ public class RegistrationController extends HttpServlet {
         String lastName = request.getParameter("lastname");
         String email = request.getParameter("email");
         String userName = request.getParameter("username");
+
+        if (rlDB.userNameExistOrNot(userName) == true) {
+            System.out.println("success");
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("login_register.jsp");
+                        rd.forward(request, response);
+        }
         String password = request.getParameter("password");
         String confirmPassword = request.getParameter("confirmpassword");
 
@@ -62,12 +69,27 @@ public class RegistrationController extends HttpServlet {
             if (rlDB.afterCompleteRegistration(user) == true) {
                 session.setAttribute("loginusername", user.getUserName());
                 session.setAttribute("loginuserid", user.getUserId());
-                RequestDispatcher rd=request.getRequestDispatcher("/index.jsp");
+
+                int postId = 0;
+                try {
+                    postId = (int) session.getAttribute("contentId");
+                    if (postId > 0) {
+
+                        response.sendRedirect("/software-schooling/PostController?contentId=" + postId);
+                    } else {
+                        RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
                         rd.forward(request, response);
+                    }
+                } catch (NullPointerException e) {
+                    RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+                    rd.forward(request, response);
+                }
+
             }
         } else {
             response.sendRedirect("login_register.jsp");
         }
+
     }
 
     @Override
