@@ -70,5 +70,7 @@ public class CommentsDB extends JdbcDao {
         }
         return comments;
     }
+    
+    // this file will be changed later
 
 }
