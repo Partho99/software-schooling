@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -14,7 +15,7 @@
         <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="vendor/bootstrap/js/bootstrap.js">
         <link rel="stylesheet" href="vendor/bootstrap/js/bootstrap.min.js">
-        
+
 
         <script src="ckeditor/ckeditor.js"></script>
         <script src="ckeditor/config.js"></script>
@@ -147,10 +148,10 @@
                                 <input type="text"  name="title" id="firstname" style="width: 100%;" required>
                                 <h4>Enter Post Title </h4>
                                 <textarea   name="description" id="editor" ></textarea> 
-
+                                Tags(e.g : java,javascript,html etc)
+                                <input type="text"  name="tag" id="firstname" placeholder="please tag the name about your technology you wrote,seperated by comma " style="width: 100%;" required>
+                                
                                 <button type="submit" class="submit float-right btn btn-primary" >Submit Post</button>
-
-
 
                             </form>
                         </div>
@@ -244,7 +245,7 @@
                 if (!messageLength) {
                     window.alert('Post Details cannot be blank');
                     //document.write('Post Details cannot be blank');
-                     //console.warn("This is a warning!");       
+                    //console.warn("This is a warning!");       
                     e.preventDefault();
                 }
             });
