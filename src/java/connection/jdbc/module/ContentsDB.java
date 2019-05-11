@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import pojo.java.module.Contents;
+import pojo.java.module.Tag;
 
 /**
  *
@@ -72,24 +73,60 @@ public class ContentsDB extends JdbcDao {
         return latestPostList;
     }
 
-    public boolean saveContents(Contents contents) {
+    public int saveContents(Contents contents) {
 
         int lastContentId = 0;
 
         try {
             openConnection();
+            statement = connection.createStatement(java.sql.ResultSet.TYPE_FORWARD_ONLY, java.sql.ResultSet.CONCUR_UPDATABLE);
 
-            String sql = "insert into contents(content_title,content_text,creation_dtm,update_dtm,user_id) values(?,?,?,?,?)";
-            ps = connection.prepareStatement(sql);
+            // resultSet = statement.executeQuery("SELECT content_id "
+            //         + "FROM contents");
+            // String sql = "insert into contents(content_title,content_text,creation_dtm,update_dtm,user_id) values(?,?,?,?,?)";
+            String sql = "select * from contents";
+            // ps = connection.prepareStatement(sql);
 
-            ps.setString(1, contents.getContentTitle());
-            ps.setString(2, contents.getContentText());
-            ps.setString(3, sdf.format(contents.getCreationDtm()));
-            ps.setString(4, sdf.format(contents.getUpdateDtm()));
-            ps.setInt(5, contents.getUserId());
+            resultSet = statement.executeQuery(sql);
 
-            ps.executeUpdate();
-            
+            resultSet.moveToInsertRow();
+            resultSet.updateString("content_title", contents.getContentTitle());
+            resultSet.updateString("content_text", contents.getContentText());
+            resultSet.updateString("creation_dtm", sdf.format(contents.getCreationDtm()));
+            resultSet.updateString("update_dtm", sdf.format(contents.getUpdateDtm()));
+            resultSet.updateInt("user_id", contents.getUserId());
+
+            resultSet.insertRow();
+            resultSet.last();
+
+            int autoIncKeyFromRS = resultSet.getInt("content_id");
+
+            System.out.println("Key returned for inserted row: "
+                    + autoIncKeyFromRS);
+            //
+//
+//            ps.setString(1, contents.getContentTitle());
+//            ps.setString(2, contents.getContentText());
+//            ps.setString(3, sdf.format(contents.getCreationDtm()));
+//            ps.setString(4, sdf.format(contents.getUpdateDtm()));
+//            ps.setInt(5, contents.getUserId());
+            // resultSet.insertRow();
+            //resultSet.last();
+            // ps.executeUpdate();
+
+            int autoIncKeyFromFunc = -1;
+            resultSet = statement.executeQuery("SELECT LAST_INSERT_ID()");
+
+            if (resultSet.next()) {
+                autoIncKeyFromFunc = resultSet.getInt(1);
+
+            } else {
+                // throw an exception from here
+            }
+
+            System.err.println(autoIncKeyFromFunc);
+
+            //inserting into tag....
             //dump......
 //
 //            String sql2 = "select max(content_id) from contents";
@@ -107,13 +144,89 @@ public class ContentsDB extends JdbcDao {
 //
 //            ps.setInt(1, lastContentId);
 //            ps.executeUpdate();
-            
-            return true;
+            return autoIncKeyFromFunc;
 
-        } catch (SQLException | ClassNotFoundException ex) {
+        } //        finally {
+        //
+        //            if (rs != null) {
+        //                try {
+        //                    rs.close();
+        //                } catch (SQLException ex) {
+        //                    // ignore
+        //                }
+        //            }
+        //
+        //            if (stmt != null) {
+        //                try {
+        //                    stmt.close();
+        //                } catch (SQLException ex) {
+        //                    // ignore
+        //                }
+        //            }
+        catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(ContentsDB.class.getName()).log(Level.SEVERE, null, ex);
         }
 
+        return 0;
+    }
+
+    public boolean saveToContentTags(Tag tag, int contentId) {
+
+        try {
+            openConnection();
+
+            String tagTitle = tag.getTagTitle();
+            String[] seperatetag = tagTitle.split(",");
+
+            for (String string : seperatetag) {
+                if (string.equalsIgnoreCase("java")) {
+                    String sql = "insert into contenttag(content_id,tag_id) values(?,?)";
+                    ps = connection.prepareStatement(sql);
+                    ps.setInt(1, contentId);
+                    ps.setInt(2, 1);
+                    ps.executeUpdate();
+                }
+                if (string.equalsIgnoreCase("javascript")) {
+                    String sql = "insert into contenttag(content_id,tag_id) values(?,?)";
+                    ps = connection.prepareStatement(sql);
+                    ps.setInt(1, contentId);
+                    ps.setInt(2, 2);
+                    ps.executeUpdate();
+                }
+                if (string.equalsIgnoreCase("html")) {
+                    String sql = "insert into contenttag(content_id,tag_id) values(?,?)";
+                    ps = connection.prepareStatement(sql);
+                    ps.setInt(1, contentId);
+                    ps.setInt(2, 3);
+                    ps.executeUpdate();
+                }
+                if (string.equalsIgnoreCase("css")) {
+                    String sql = "insert into contenttag(content_id,tag_id) values(?,?)";
+                    ps = connection.prepareStatement(sql);
+                    ps.setInt(1, contentId);
+                    ps.setInt(2, 4);
+                    ps.executeUpdate();
+                }
+               if (string.equalsIgnoreCase("mysql")) {
+                    String sql = "insert into contenttag(content_id,tag_id) values(?,?)";
+                    ps = connection.prepareStatement(sql);
+                    ps.setInt(1, contentId);
+                    ps.setInt(2, 5);
+                    ps.executeUpdate();
+                }
+                if (string.equalsIgnoreCase("rdms")) {
+                    String sql = "insert into contenttag(content_id,tag_id) values(?,?)";
+                    ps = connection.prepareStatement(sql);
+                    ps.setInt(1, contentId);
+                    ps.setInt(2, 6);
+                    ps.executeUpdate();
+                }
+            }
+
+            return true;
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(ContentsDB.class.getName()).log(Level.SEVERE, null, ex);
+        }
         return false;
     }
 
@@ -157,5 +270,7 @@ public class ContentsDB extends JdbcDao {
 //        }
 //        return false;
 //    }
-
+    public boolean saveContents(Contents contents, int l) {
+        return true;
+    }
 }
