@@ -40,7 +40,7 @@ public class FileUploadController extends HttpServlet {
         ProfileImage userImage = new ProfileImage();
 
         final Part filePart = request.getPart("file");
-        //System.out.println(filePart.getSize());
+        System.out.println(filePart.getSize());
 
         if (filePart.getSize() != 0) {
             HttpSession session = request.getSession();
@@ -66,7 +66,6 @@ public class FileUploadController extends HttpServlet {
                 final byte[] bytes = new byte[1024];
 
                 while ((read = fileContent.read(bytes)) != -1) {
-
                     out.write(bytes, 0, read);
 
                 }
