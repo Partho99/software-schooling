@@ -130,13 +130,13 @@
                         <label for="inputQuestionText" class="col-lg-2 ">Question Text</label>
                         <div class="col-lg-10">
                             <input type="text" name="question_text" class="form-control" id="inputQuestionText"
-                                   placeholder="Text">
+                                   placeholder="Text" required >
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="select" class="col-lg-2 control-label">Select Topic</label>
                         <div class="col-lg-10">
-                            <select class="form-control" id="select" name="tags">
+                            <select class="form-control" id="select" name="tags" required >
                                 <option disabled="disabled" selected="selected">Select Topic</option>
                                 <option value="java">Java</option>
                                 <option value="c++">C++</option>
@@ -147,23 +147,23 @@
                     <div class="form-group">
                         <label for="inputChoice_1" class="col-lg-2 control-label">Option 1</label>
                         <div class="col-sm-8">
-                            <input type="text" name="choice1_text" class="form-control" id="inputChoice_1" placeholder="Choice Text">
+                            <input type="text" name="option1" class="form-control" id="inputChoice_1" placeholder="Choice Text" required >
                         </div>
                         <div class="col-sm-2 text-left"><br>
                             <label>
-                                <input type="radio" name="correct_choice" value="1">
+                                <input type="radio" name="correct_choice" value="1" required >
                                 Correct Answer
                             </label>
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="inputChoice_2" class="col-lg-2 control-label">Option 2</label>
+                        <label for="inputChoice_2" class="col-lg-2 control-label ">Option 2</label>
                         <div class="col-sm-8">
-                            <input type="text" name="choice2_text" class="form-control" id="inputChoice_2" placeholder="Choice Text">
+                            <input type="text" name="option2" class="form-control" id="inputChoice_2" placeholder="Choice Text" required >
                         </div>
                         <div class="col-sm-2 text-left"><br>
                             <label>
-                                <input type="radio" name="correct_choice" value="2">
+                                <input type="radio" name="correct_choice" value="2" required >
                                 Correct Answer
                             </label>
                         </div>
@@ -171,11 +171,11 @@
                     <div class="form-group">
                         <label for="inputChoice_3" class="col-lg-2 control-label">Option 3</label>
                         <div class="col-sm-8">
-                            <input type="text" name="choice3_text" class="form-control" id="inputChoice_3" placeholder="Choice Text">
+                            <input type="text" name="option3" class="form-control" id="inputChoice_3" placeholder="Choice Text" required >
                         </div>
                         <div class="col-sm-2 text-left"><br>
                             <label>
-                                <input type="radio" name="correct_choice" value="3">
+                                <input type="radio" name="correct_choice" value="3" required >
                                 Correct Answer
                             </label>
                         </div>
@@ -183,11 +183,11 @@
                     <div class="form-group">
                         <label for="inputChoice_4" class="col-lg-2 control-label">Option 4</label>
                         <div class="col-sm-8">
-                            <input type="text" name="choice4_text" class="form-control" id="inputChoice_4" placeholder="Choice Text">
+                            <input type="text" name="option4" class="form-control" id="inputChoice_4" placeholder="Choice Text" required >
                         </div>
                         <div class="col-sm-2 text-left"><br>
                             <label>
-                                <input type="radio" name="correct_choice" value="4">
+                                <input type="radio" name="correct_choice" value="4" required >
                                 Correct Answer
                             </label>
                         </div>
