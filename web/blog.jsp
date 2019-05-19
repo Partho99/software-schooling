@@ -213,7 +213,7 @@
                     </div>
                     <!-- Widget [Latest Posts Widget]        -->
 
-                    <div class="widget latest-posts">
+                    <div class="card widget latest-posts">
                         <header>
                             <h3 class="h6">Latest Posts</h3>
                         </header>
@@ -239,7 +239,7 @@
                         <% }%>
                     </div>
                     <!-- Widget [Categories Widget]-->
-                    <div class="widget categories">
+                    <div class=" card widget categories">
                         <header>
                             <h3 class="h6">Categories</h3>
                         </header>

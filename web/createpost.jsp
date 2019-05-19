@@ -32,7 +32,6 @@
         <!-- Custom stylesheet - for your changes-->
 
 
-
     </head>
     <body>
 
@@ -150,7 +149,7 @@
                                 <textarea   name="description" id="editor" ></textarea> 
                                 Tags(e.g : java,javascript,html etc)
                                 <input type="text"  name="tag" id="firstname" placeholder="please tag the name about your technology you wrote,seperated by comma " style="width: 100%;" required>
-                                
+
                                 <button type="submit" class="submit float-right btn btn-primary" >Submit Post</button>
 
                             </form>
@@ -239,17 +238,21 @@
         </div>
 
         <script>
-            CKEDITOR.replace('editor');
+            CKEDITOR.replace('editor', {
+                removePlugins: 'save'
+               
+                
+
+            });
             $("form").submit(function (e) {
                 var messageLength = CKEDITOR.instances['editor'].getData().replace(/<[^>]*>/gi, '').length;
                 if (!messageLength) {
                     window.alert('Post Details cannot be blank');
-                    //document.write('Post Details cannot be blank');
-                    //console.warn("This is a warning!");       
                     e.preventDefault();
                 }
             });
         </script>
+
 
     </body>
 

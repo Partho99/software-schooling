@@ -142,7 +142,7 @@
                 <div class="col-lg-8 order-lg-2">
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a href="#"  class="nav-link active" id="profilelink">Profile</a>
+                            <a href="#"  class="nav-link" id="profilelink">Profile</a>
                         </li>
                         <li class="nav-item">
                             <a href="#"  class="nav-link" id="editlink">Edit</a>
@@ -292,7 +292,7 @@
                                 <label class="custom-file">
                                     <input type="file" name="file" style="width:200px" accept="image/*" id="imgInp">
                                 </label>
-                                <button class="btn fa fa-pencil-square-o"> Update</button>
+                                <button class="btn fa fa-pencil-square-o" style="position: absolute"> Update</button>
                             </div>
                         </form >
 
@@ -303,7 +303,6 @@
         </div>
 
         <script>
-
             function readURL(input) {
 
                 if (input.files && input.files[0]) {
@@ -320,8 +319,6 @@
             $("#imgInp").change(function () {
                 readURL(this);
             });
-
-
         </script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 

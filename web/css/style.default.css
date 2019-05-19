@@ -448,8 +448,8 @@ div[class*="-btn"] {
 */
 .navbar {
     background: #fff;
-    padding-top: 5px !important;
-    padding-bottom: 5px !important;
+    padding-top: 0px !important;
+    padding-bottom: 0px !important;
     z-index: 9998;
     border-bottom: 0px solid #ddd;
 }
@@ -2641,8 +2641,8 @@ a.text-dark:focus, a.text-dark:hover {
     margin: 15px ;
     padding: ;
     font-size: 15px;
-   /* border-top: 10px dashed #eee;
-    text-align: center; */
+    /* border-top: 10px dashed #eee;
+     text-align: center; */
 }
 .like-content span {
     color: #9d9da4;
@@ -2686,3 +2686,35 @@ a.text-dark:focus, a.text-dark:hover {
     margin-top: 50px;
     padding-bottom: 30px;
 }
+.homeimgfix{
+    margin-right: 50px;
+    margin-top: 0px;
+    width: 100px;
+    height: 100px;
+}
+/*.card {   
+    background: white;
+    box-shadow: 0px 0px 0px grey;
+    -webkit-transition:  box-shadow .6s ease-out;
+    box-shadow: .8px .9px 3px grey;
+
+}*/
+.card:hover{ 
+    box-shadow:0 0 11px rgba(33,33,33,.2);
+    -webkit-transition:  box-shadow .2s ease-in;
+}
+
+body {
+    background-color: white;
+}
+
+.hell:hover{ 
+    box-shadow: 0 0 11px rgba(33,33,33,.2); ;
+    -webkit-transition:  box-shadow .2s ease-in;
+}
+.sizefixing{
+    padding-top: 50px;
+    position: absolute;
+    
+}
+

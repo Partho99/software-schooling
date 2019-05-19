@@ -30,6 +30,7 @@
         <link rel="stylesheet" href="css/custom.css">
         <!-- Favicon-->
         <link rel="shortcut icon" href="favicon.png">
+        
 
 
     </head>
@@ -135,6 +136,7 @@
 
         %>
         <div class="container">
+
             <div class="row">
                 <!-- Latest Posts -->
                 <main class="post blog-post col-lg-8"> 
@@ -195,6 +197,7 @@
 
 
 
+
                                 <div class="post-body">
 
 
@@ -203,10 +206,22 @@
                                     <p><%%></p>
                                     <p> <img src="img/featured-pic-3.jpeg" alt="..." class="img-fluid"></p>
 
-                                    <h2><%=postItem.get(i).getContentTitle()%></h2>
-                                    <%=postItem.get(i).getContentText()%>
-
+                                    <div class="card">
+                        <div class="card-body">
+                              <h2><%=postItem.get(i).getContentTitle()%></h2> 
+                        </div>
+                    </div>
+                                    
+                                    
                                 </div>
+                                
+                    <div class="card editorsStyle">
+                        <div class="card-body">
+                             <% out.println(postItem.get(i).getContentText()); %>
+                        </div>
+                    </div>
+               
+                                   
 
                                 <div class="post-tags" id="textcolor"><a href="#" class="tag" >#Business</a><a href="#" class="tag">#Tricks</a><a href="#" class="tag">#Financial</a><a href="#" class="tag">#Economy</a></div>
                                 <div class="posts-nav d-flex justify-content-between align-items-stretch flex-column flex-md-row"><a href="#" class="prev-post text-left d-flex align-items-center">
@@ -219,10 +234,10 @@
                                         </div>
                                         <div class="icon next"><i class="fa fa-angle-right">   </i></div></a></div>
                                 <div class="post-comments">
-                                    
-                                    <% ArrayList<Comment> commentslength = (ArrayList<Comment>) request.getAttribute("comments"); %> 
+
+                                    <% ArrayList<Comment> commentslength = (ArrayList<Comment>) request.getAttribute("comments");%> 
                                     <header>
-                                        <h3 class="h6" style="color:#930505;">Post Comments<span class="no-of-comments" style="color:blue;">(<%=commentslength.size() %>)</span></h3>
+                                        <h3 class="h6" style="color:#930505;">Post Comments<span class="no-of-comments" style="color:blue;">(<%=commentslength.size()%>)</span></h3>
                                     </header>
 
                                     <%  ArrayList<Comment> comments = (ArrayList<Comment>) request.getAttribute("comments");
@@ -254,6 +269,7 @@
                                     String username = (String) session1.getAttribute("loginusername");
                                     if (username != null) {
                                 %>
+                                
                                 <div class="add-comment">
                                     <header>
                                         <h3 class="h6">Leave a reply</h3>

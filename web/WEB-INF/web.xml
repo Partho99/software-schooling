@@ -36,6 +36,14 @@
         <servlet-name>VotingController</servlet-name>
         <servlet-class>controller.servlet.module.VotingController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DetailsController</servlet-name>
+        <servlet-class>controller.servlet.module.DetailsController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AddMcqController</servlet-name>
+        <servlet-class>controller.servlet.module.AddMcqController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>RegistrationController</servlet-name>
         <url-pattern>/RegistrationController</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>VotingController</servlet-name>
         <url-pattern>/VotingController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DetailsController</servlet-name>
+        <url-pattern>/DetailsController</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AddMcqController</servlet-name>
+        <url-pattern>/AddMcqController</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
